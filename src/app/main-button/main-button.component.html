@@ -1,5 +1,18 @@
 <div>
-  <p>Name</p>
-  <p>Checkmark</p>
-  <p>Date</p>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Coffee?</th>
+        <th scope="col">Short Supply?</th>
+        <th scope="col">Last Checked</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let machine of machines; index as i">
+        <td>{{ machine.name }}</td>
+        <app-supply-display [machineId]="i"></app-supply-display>
+      </tr>
+    </tbody>
+  </table>
 </div>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Machine } from '../model/machine';
+import { MachineService } from '../service/machine-service.service';
 
 @Component({
   selector: 'app-main-button',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainButtonComponent implements OnInit {
 
-  constructor() { }
+  machines!: Machine[];
+
+  constructor(private machineService: MachineService) { }
 
   ngOnInit(): void {
+    this.machineService.getMachines().subscribe(data => {
+      this.machines = data;
+    });
   }
-
 }
