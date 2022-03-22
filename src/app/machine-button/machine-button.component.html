@@ -11,7 +11,7 @@
     <tbody>
       <tr *ngFor="let machine of machines; index as i">
         <td>{{ machine.name }}</td>
-        <app-supply-display [machineId]="i"></app-supply-display>
+        <app-supply-display [machineId]="i+1"></app-supply-display>
       </tr>
     </tbody>
   </table>

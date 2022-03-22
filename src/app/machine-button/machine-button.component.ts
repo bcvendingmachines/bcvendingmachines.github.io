@@ -3,11 +3,11 @@ import { Machine } from '../model/machine';
 import { MachineService } from '../service/machine-service.service';
 
 @Component({
-  selector: 'app-main-button',
-  templateUrl: './main-button.component.html',
-  styleUrls: ['./main-button.component.sass']
+  selector: 'app-machine-button',
+  templateUrl: './machine-button.component.html',
+  styleUrls: ['./machine-button.component.sass']
 })
-export class MainButtonComponent implements OnInit {
+export class MachineButtonComponent implements OnInit {
 
   machines!: Machine[];
 

@@ -9,12 +9,13 @@ import { SupplyService } from '../service/supply-service.service';
 export class SupplyDisplayComponent implements OnInit {
 
   supply!: Supply[];
-  @Input() machineId: Number = 1;
+  @Input() machineId!: Number;
   constructor(private supplyService: SupplyService) { }
 
   ngOnInit(): void {
     this.supplyService.getSupply(+this.machineId).subscribe(data => {
       this.supply = data;
     });
+    console.log("supply-display: "+this.supply)
   }
 }
