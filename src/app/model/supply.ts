@@ -1,8 +1,9 @@
+import { Machine } from "./machine";
 export class Supply {
   id!: Number;
-  machine!: string;
-  timeChecked!: string;
-  hasCoffee!: boolean;
-  hasShortSupply!: boolean;
+  machine!: Machine;
+  time_checked!: Date;
+  has_coffee!: boolean;
+  has_short_supply!: boolean;
   user!: string;
 }

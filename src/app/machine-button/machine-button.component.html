@@ -6,13 +6,11 @@
         <th scope="col">Coffee?</th>
         <th scope="col">Short Supply?</th>
         <th scope="col">Last Checked</th>
+        <th scope="col">User</th>
       </tr>
     </thead>
-    <tbody>
-      <tr *ngFor="let machine of machines; index as i">
-        <td>{{ machine.name }}</td>
-        <app-supply-display [machineId]="i+1"></app-supply-display>
-      </tr>
+    <tbody *ngFor="let machine of machines; index as i">
+      <app-supply-display [machineName]="machine.name" [machineId]="i+1"></app-supply-display>
     </tbody>
   </table>
 </div>
