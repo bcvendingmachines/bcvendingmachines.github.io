@@ -1,16 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Supply } from '../model/supply';
 import { SupplyService } from '../service/supply-service.service';
-import { Machine } from '../model/machine';
-
-interface SupplyI {
-  id: Number;
-  machine: Machine;
-  time_checked: Date;
-  has_coffee: boolean;
-  has_short_supply: boolean;
-  user: string;
-}
 
 @Component({
   selector: 'app-supply-display',
