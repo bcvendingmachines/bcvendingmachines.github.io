@@ -13,12 +13,15 @@ export class SupplyDisplayComponent implements OnInit {
   supply!: Supply;
   @Input() machineName!:string;
   @Input() machineId!: Number;
-
+  @Input() coffeeChecked!: boolean;
+  @Input() shortSupplyChecked!: boolean;
   constructor(private supplyService: SupplyService) { }
 
   ngOnInit(): void {
     this.supplyService.getSupply(+this.machineId).subscribe(data => {
       this.supply = data;
+      this.supply.has_coffee ? this.coffeeChecked = true : this.coffeeChecked = false;
+      this.supply.has_short_supply ? this.shortSupplyChecked = true : this.shortSupplyChecked = false;
     });
   };
 }

@@ -1,11 +1,11 @@
-<mat-accordion>
-  <mat-expansion-panel hideToggle>
+<mat-accordion multi>
+  <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title>
         {{machineName}}
       </mat-panel-title>
       <mat-panel-description>
-        <mat-chip-list aria-label="Supply option">
+        <mat-chip-list multiple aria-label="Supply option">
           <mat-chip>
             <mat-chip-avatar>
               <mat-icon color="accent" *ngIf="supply.has_coffee">check_circle</mat-icon>
@@ -13,23 +13,34 @@
             </mat-chip-avatar>
             Coffee
           </mat-chip>
-          <mat-chip color="primary">
+          <mat-chip>
             <mat-chip-avatar>
               <mat-icon color="accent" *ngIf="supply.has_short_supply">check_circle</mat-icon>
               <mat-icon color="warn" *ngIf="!supply.has_short_supply">highlight_off</mat-icon>
             </mat-chip-avatar>
             Short Supply
           </mat-chip>
-          <mat-chip color="accent">
+          <mat-chip>
             Last Checked: {{supply.time_checked}}
           </mat-chip>
-          <mat-chip color="accent">
+          <mat-chip>
             Last User: {{supply.user}}
+          </mat-chip>
+          <mat-chip selected color="primary">
+            Edit
           </mat-chip>
         </mat-chip-list>
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <p>This is the primary content of the panel.</p>
+    <form>
+      <mat-slide-toggle formControlName="coffee" [checked]="coffeeChecked">Coffee</mat-slide-toggle>
+      <mat-slide-toggle formControlName="short-supply" [checked]="shortSupplyChecked">Short Supply</mat-slide-toggle>
+      <mat-form-field appearance="fill">
+        <mat-label>Your Name</mat-label>
+        <input matInput required>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit">Save</button>
+    </form>
   </mat-expansion-panel>
 </mat-accordion>
 
