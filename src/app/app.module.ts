@@ -16,7 +16,12 @@ import { MatIconModule } from '@angular/material/icon';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-
+import { GridComponent } from './grid/grid.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { LayoutModule } from '@angular/cdk/layout';
+import { FlexLayoutModule } from '@angular/flex-layout';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +29,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     BarComponent,
     SupplyDisplayComponent,
     PageComponent,
+    GridComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +44,12 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatIconModule,
     MatSlideToggleModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    LayoutModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
