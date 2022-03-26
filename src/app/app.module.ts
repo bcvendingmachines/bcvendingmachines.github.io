@@ -7,9 +7,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { MachineButtonComponent } from './machine-button/machine-button.component';
-import { BarComponent } from './bar/bar.component';
 import { SupplyDisplayComponent } from './supply-display/supply-display.component';
-import { PageComponent } from './page/page.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
@@ -26,9 +24,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   declarations: [
     AppComponent,
     MachineButtonComponent,
-    BarComponent,
     SupplyDisplayComponent,
-    PageComponent,
     GridComponent,
   ],
   imports: [

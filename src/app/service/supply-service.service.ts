@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { Observable, map } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Supply } from '../model/supply';
 @Injectable({
   providedIn: 'root'
 })
 export class SupplyService {
   private supplyUrl: string;
-
+  private saveUrl: string;
   constructor(private http: HttpClient) {
     this.supplyUrl = 'http://localhost:8080/supply/';
+    this.saveUrl = 'http://localhost:8080/save'
   }
 
   public getSupply(id:number) : Observable<Supply> {
@@ -17,6 +18,6 @@ export class SupplyService {
   }
 
   public save(supply: Supply) {
-    return this.http.post<Supply>(this.supplyUrl, supply);
+    return this.http.post<Supply>(this.saveUrl, supply);
   }
 }

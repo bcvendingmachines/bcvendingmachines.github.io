@@ -14,7 +14,6 @@ export class MachineService {
 
   public getMachines(): Observable<Machine[]> {
     let response = this.http.get<Machine[]>(this.machinesUrl);
-    console.log(response);
     return response;
   }
 }

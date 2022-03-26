@@ -1,3 +1,5 @@
+import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,9 +8,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title: string;
+  mobile: boolean;
 
-  constructor(){
-    this.title = 'bc-vending-machines';
-  }
+  constructor(private breakpointObserver: BreakpointObserver){
+    this.mobile = false;
+    breakpointObserver.observe([
+      Breakpoints.XSmall,
+      Breakpoints.Small
+    ]).subscribe(result => {
+      if (result.matches) {
+        this.mobile = true;
+      };
+    });
+  };
 }

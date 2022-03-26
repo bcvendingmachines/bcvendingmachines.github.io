@@ -10,12 +10,17 @@ import { MachineService } from '../service/machine-service.service';
 export class MachineButtonComponent implements OnInit {
 
   machines!: Machine[];
-
-  constructor(private machineService: MachineService) { }
+  loaded: boolean;
+  constructor(private machineService: MachineService) {
+    this.loaded = false;
+  }
 
   ngOnInit(): void {
     this.machineService.getMachines().subscribe(data => {
       this.machines = data;
+      if (data){
+        this.loaded = true;
+      }
     });
   }
 }
