@@ -9,7 +9,7 @@ import { MachineService } from '../service/machine-service.service';
 })
 export class MachineButtonComponent implements OnInit {
 
-  machines!: Machine[];
+  machines?: Machine[];
   loaded: boolean;
   constructor(private machineService: MachineService) {
     this.loaded = false;

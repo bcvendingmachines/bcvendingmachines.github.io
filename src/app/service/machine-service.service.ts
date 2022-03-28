@@ -13,7 +13,6 @@ export class MachineService {
   }
 
   public getMachines(): Observable<Machine[]> {
-    let response = this.http.get<Machine[]>(this.machinesUrl);
-    return response;
+    return this.http.get<Machine[]>(this.machinesUrl);
   }
 }
