@@ -32,14 +32,14 @@
         </mat-chip-list>
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <form (NgSubmit)="submitChanges()">
-      <mat-slide-toggle formControlName="coffee" [checked]="coffeeChecked">Coffee</mat-slide-toggle>
-      <mat-slide-toggle formControlName="short-supply" [checked]="shortSupplyChecked">Short Supply</mat-slide-toggle>
+    <form>
+      <mat-slide-toggle formControlName="coffee" (toggleChange)="logToggle('coffee')" [checked]="coffeeChecked">Coffee</mat-slide-toggle>
+      <mat-slide-toggle formControlName="short-supply" (toggleChange)="logToggle('shortSupply')" [checked]="shortSupplyChecked">Short Supply</mat-slide-toggle>
       <mat-form-field appearance="fill">
         <mat-label>Your Name</mat-label>
-        <input matInput required class="mx-sm">
+        <input matInput required class="mx-sm" name="supplyInput" #supplyInput>
       </mat-form-field>
-      <button mat-raised-button color="primary" type="button" (click)="submitChanges()">Save</button>
+      <button mat-raised-button color="primary" type="button" (click)="submitChanges(supplyInput.value)">Save</button>
     </form>
   </mat-expansion-panel>
 </mat-accordion>

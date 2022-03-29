@@ -4,6 +4,7 @@ import { SupplyService } from '../service/supply-service.service';
 import { MatAccordion } from '@angular/material/expansion';
 import { ViewChild } from '@angular/core';
 import { Machine } from '../model/machine';
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-supply-display',
   templateUrl: './supply-display.component.html',
@@ -13,7 +14,7 @@ import { Machine } from '../model/machine';
 export class SupplyDisplayComponent implements OnInit {
 
   supply!: Supply;
-  testSupply!: Supply;
+  newSupply!: Supply;
   loaded: boolean;
   @Input() machineId!: Number;
   @Input() coffeeChecked!: boolean;
@@ -26,25 +27,36 @@ export class SupplyDisplayComponent implements OnInit {
 
   ngOnInit(): void {
     this.supplyService.getSupply(+this.machineId).subscribe(data => {
-      this.supply = data;
-      console.log(this.supply);
-      this.supply.has_coffee ? this.coffeeChecked = true : this.coffeeChecked = false;
-      this.supply.has_short_supply ? this.shortSupplyChecked = true : this.shortSupplyChecked = false;
-      if (data){
-        this.loaded = true;
-      };
+      this.populateSupply(data);
     });
   };
 
-  submitChanges(): void {
+  populateSupply(data: any):void {
+    this.supply = data;
+    this.supply.has_coffee ? this.coffeeChecked = true : this.coffeeChecked = false;
+    this.supply.has_short_supply ? this.shortSupplyChecked = true : this.shortSupplyChecked = false;
+    if (data){
+      this.loaded = true;
+    };
+  };
 
-    this.testSupply = new Supply();
-    this.testSupply.has_coffee = false;
-    this.testSupply.has_short_supply = false;
-    this.testSupply.machine = this.supply.machine;
-    this.testSupply.user = "Jim";
-    this.testSupply.time_checked = new Date();
+  logToggle(component: string){
+    if (component=="coffee"){
+      this.coffeeChecked = !this.coffeeChecked;
+    } else {
+      this.shortSupplyChecked = !this.shortSupplyChecked;
+    };
+  };
+  submitChanges(user:string): void {
+    this.newSupply = new Supply();
+    this.newSupply.machine = this.supply.machine;
+    this.newSupply.time_checked = new Date();
+    this.newSupply.user = user;
 
-    this.supplyService.save(this.testSupply);
+    this.newSupply.has_coffee = this.coffeeChecked;
+    this.newSupply.has_short_supply = this.shortSupplyChecked;
+
+    this.supplyService.save(this.newSupply).subscribe();
+    location.reload();
   }
 }

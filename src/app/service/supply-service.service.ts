@@ -15,5 +15,5 @@ export class SupplyService {
 
   public getSupply(id:number) : Observable<Supply> {return this.http.get<Supply>(this.supplyUrl+id)};
 
-  public save(supply: Supply) {return this.http.post(this.saveUrl, supply).subscribe({complete:console.info})};
+  public save(supply: Supply) {return this.http.post(this.saveUrl, supply)};
 }
