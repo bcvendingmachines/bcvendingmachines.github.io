@@ -1,10 +1,6 @@
 <div *ngIf="!loaded">
   Loading...
 </div>
-<mat-grid-list cols="3" rowHeight="6:1" *ngIf="loaded">
-  <mat-grid-tile *ngFor="let machine of machines; index as i">
-    <mat-card>
-      <app-supply-display [machineId]="i+1"></app-supply-display>
-    </mat-card>
-  </mat-grid-tile>
-</mat-grid-list>
+<mat-card fxFlex.gt-xs="49%" *ngFor="let machine of machines; index as i">
+  <app-supply-display [machineId]="i+1"></app-supply-display>
+</mat-card>
