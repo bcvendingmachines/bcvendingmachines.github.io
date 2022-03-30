@@ -8,17 +8,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  mobile: boolean;
 
-  constructor(private breakpointObserver: BreakpointObserver){
-    this.mobile = false;
-    breakpointObserver.observe([
-      Breakpoints.XSmall,
-      Breakpoints.Small
-    ]).subscribe(result => {
-      if (result.matches) {
-        this.mobile = true;
-      };
-    });
+  constructor(){
   };
 }

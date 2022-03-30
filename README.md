@@ -24,7 +24,6 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 ## Dev Checklist 
 
-- Screen size scalability
 - Button spacing
 - Live reload over location.reload
 - Metadata

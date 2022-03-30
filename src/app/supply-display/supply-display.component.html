@@ -26,10 +26,10 @@
       Short Supply
     </mat-chip>
     <mat-chip>
-      Last Checked: {{supply.time_checked | date:'shortDate'}}
+      Checked: {{supply.time_checked | date:'shortDate'}}
     </mat-chip>
     <mat-chip>
-      Last User: {{supply.user}}
+      By: {{supply.user}}
     </mat-chip>
   </mat-chip-list>
 
@@ -38,8 +38,10 @@
     <mat-slide-toggle formControlName="short-supply" (toggleChange)="logToggle('shortSupply')" [checked]="shortSupplyChecked">Short Supply</mat-slide-toggle>
     <mat-form-field>
       <mat-label>Your Name</mat-label>
-      <input matInput required class="mx-sm" name="supplyInput" #supplyInput>
+      <input matInput class="mx-sm" name="supplyInput" #supplyInput>
     </mat-form-field>
-    <button mat-raised-button color="primary" type="button" (click)="submitChanges(supplyInput.value)">Save</button>
+    <button mat-icon-button aria-label="Save button" (click)="submitChanges(supplyInput.value)">
+      <mat-icon color="accent">done_outline</mat-icon>
+    </button>
   </form>
 </mat-card-content>

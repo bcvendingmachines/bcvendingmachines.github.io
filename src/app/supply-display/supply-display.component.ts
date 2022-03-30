@@ -53,12 +53,12 @@ export class SupplyDisplayComponent implements OnInit {
     this.newSupply = new Supply();
     this.newSupply.machine = this.supply.machine;
     this.newSupply.time_checked = new Date();
-    this.newSupply.user = user;
+    this.newSupply.user = !user? "Anon.": user;
 
     this.newSupply.has_coffee = this.coffeeChecked;
     this.newSupply.has_short_supply = this.shortSupplyChecked;
 
-    this.supplyService.save(this.newSupply).subscribe();
+    this.supplyService.save(this.newSupply).subscribe(x=>console.log(x));
     location.reload();
   }
 }
