@@ -15,7 +15,7 @@ The back end is available as [bcvm-API](https://github.com/zachneill/bcvm-api). 
 ### To run the application, required technologies are:
 
 - Angular + Angular CLI (port 4200)
-- Spring Boot-compatible API (for the [bcvm-API](https://github.com/zachneill/bcvm-api) server) (port 8080)
+- Spring Boot-compatible IDE (for the [bcvm-API](https://github.com/zachneill/bcvm-api) server) (port 8080)
 - mySQL (port 3306)
 - npm
 
