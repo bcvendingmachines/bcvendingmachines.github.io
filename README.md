@@ -26,6 +26,7 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 - Screen size scalability
 - Button spacing
+- Live reload over location.reload
 - Metadata
-- ReadMe
+- Personalized README
 - Tests

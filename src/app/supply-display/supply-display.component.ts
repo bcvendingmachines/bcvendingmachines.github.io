@@ -16,6 +16,7 @@ export class SupplyDisplayComponent implements OnInit {
   supply!: Supply;
   newSupply!: Supply;
   loaded: boolean;
+  editMode: boolean;
   @Input() machineId!: Number;
   @Input() coffeeChecked!: boolean;
   @Input() shortSupplyChecked!: boolean;
@@ -23,6 +24,7 @@ export class SupplyDisplayComponent implements OnInit {
 
   constructor(private supplyService: SupplyService) {
     this.loaded = false;
+    this.editMode = false;
   }
 
   ngOnInit(): void {
