@@ -1,31 +1,37 @@
-# BcVendingMachines
+# BC Vending Machines
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.5.
+![GitHub package.json version (branch)](https://img.shields.io/github/package-json/v/zachneill/bc-vending-machines/master?label=version&style=for-the-badge)
+![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/zachneill/bc-vending-machines/@angular/core?label=angular&style=for-the-badge)
+![GitHub last commit](https://img.shields.io/github/last-commit/zachneill/bc-vending-machines?color=purple&style=for-the-badge) 
 
-## Development server
+An application that describes whether a vending machine on campus is on short supply or is out of coffee. 
+
+## Technologies
+
+This uses Angular 13, including the Angular CLI. It is the front end for BC Vending Machines. 
+
+The back end is available as [bcvm-API](https://github.com/zachneill/bcvm-api). It uses Spring Boot and connects to a "bcvmdb" mySQL database on port 3306.
+
+### To run the application, required technologies are:
+
+- Angular + Angular CLI (port 4200)
+- Spring Boot-compatible API (for the [bcvm-API](https://github.com/zachneill/bcvm-api) server) (port 8080)
+- mySQL (port 3306)
+- npm
+
+## Scripts
+
+### Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
-
-Run `ng g c component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
+### Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
 ## Dev Checklist 
 
 - Button spacing
 - Live reload over location.reload
 - Metadata
-- Personalized README
 - Tests
