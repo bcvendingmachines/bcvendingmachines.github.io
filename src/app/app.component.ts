@@ -1,5 +1,3 @@
-import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
-
 import { Component } from '@angular/core';
 
 @Component({

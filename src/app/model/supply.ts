@@ -2,8 +2,8 @@ import { Machine } from "./machine";
 export class Supply {
   id!: Number;
   machine!: Machine;
+  coffee!: boolean;
+  short_supply!: boolean;
   time_checked!: Date;
-  has_coffee!: boolean;
-  has_short_supply!: boolean;
-  user!: string;
+  checked_by!: string;
 }

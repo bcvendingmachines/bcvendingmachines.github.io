@@ -9,6 +9,7 @@ export class MachineService {
   private machinesUrl: string;
 
   constructor(private http: HttpClient) {
+    // this.machinesUrl = 'https://bcvm.herokuapp.com/machines';
     this.machinesUrl = 'http://localhost:8080/machines';
   }
 

@@ -11,17 +11,17 @@
 
 <mat-card-content *ngIf="loaded">
   <mat-chip-list multiple aria-label="Supply option" *ngIf="!editMode">
-    <mat-chip [disabled]="supply.has_coffee ? false : true">
+    <mat-chip [disabled]="supply.coffee ? false : true">
       <mat-chip-avatar>
-        <mat-icon color="accent" *ngIf="supply.has_coffee">check_circle</mat-icon>
-        <mat-icon color="warn" *ngIf="!supply.has_coffee">highlight_off</mat-icon>
+        <mat-icon color="accent" *ngIf="supply.coffee">check_circle</mat-icon>
+        <mat-icon color="warn" *ngIf="!supply.coffee">highlight_off</mat-icon>
       </mat-chip-avatar>
       Coffee
     </mat-chip>
-    <mat-chip [disabled]="supply.has_short_supply ? false : true">
+    <mat-chip [disabled]="supply.short_supply ? false : true">
       <mat-chip-avatar>
-        <mat-icon color="accent" *ngIf="supply.has_short_supply">check_circle</mat-icon>
-        <mat-icon color="warn" *ngIf="!supply.has_short_supply">highlight_off</mat-icon>
+        <mat-icon color="accent" *ngIf="supply.short_supply">check_circle</mat-icon>
+        <mat-icon color="warn" *ngIf="!supply.short_supply">highlight_off</mat-icon>
       </mat-chip-avatar>
       Short Supply
     </mat-chip>
@@ -29,7 +29,7 @@
       Checked: {{supply.time_checked | date:'shortDate'}}
     </mat-chip>
     <mat-chip>
-      By: {{supply.user}}
+      By: {{supply.checked_by}}
     </mat-chip>
   </mat-chip-list>
 

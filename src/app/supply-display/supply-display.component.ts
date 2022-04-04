@@ -3,8 +3,7 @@ import { Supply } from '../model/supply';
 import { SupplyService } from '../service/supply-service.service';
 import { MatAccordion } from '@angular/material/expansion';
 import { ViewChild } from '@angular/core';
-import { Machine } from '../model/machine';
-import { NgForm } from '@angular/forms';
+
 @Component({
   selector: 'app-supply-display',
   templateUrl: './supply-display.component.html',
@@ -35,8 +34,8 @@ export class SupplyDisplayComponent implements OnInit {
 
   populateSupply(data: any):void {
     this.supply = data;
-    this.supply.has_coffee ? this.coffeeChecked = true : this.coffeeChecked = false;
-    this.supply.has_short_supply ? this.shortSupplyChecked = true : this.shortSupplyChecked = false;
+    this.supply.coffee ? this.coffeeChecked = true : this.coffeeChecked = false;
+    this.supply.short_supply ? this.shortSupplyChecked = true : this.shortSupplyChecked = false;
     if (data){
       this.loaded = true;
     };
@@ -49,16 +48,15 @@ export class SupplyDisplayComponent implements OnInit {
       this.shortSupplyChecked = !this.shortSupplyChecked;
     };
   };
-  submitChanges(user:string): void {
+  submitChanges(checked_by:string): void {
     this.newSupply = new Supply();
     this.newSupply.machine = this.supply.machine;
     this.newSupply.time_checked = new Date();
-    this.newSupply.user = !user? "Anon.": user;
+    this.newSupply.checked_by = !checked_by? "Anon.": checked_by;
 
-    this.newSupply.has_coffee = this.coffeeChecked;
-    this.newSupply.has_short_supply = this.shortSupplyChecked;
+    this.newSupply.coffee = this.coffeeChecked;
+    this.newSupply.short_supply = this.shortSupplyChecked;
 
     this.supplyService.save(this.newSupply).subscribe(x=>console.log(x));
-    location.reload();
   }
 }
