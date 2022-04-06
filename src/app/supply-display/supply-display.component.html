@@ -38,7 +38,7 @@
     <mat-slide-toggle formControlName="short-supply" (toggleChange)="logToggle('shortSupply')" [checked]="shortSupplyChecked">Short Supply</mat-slide-toggle>
     <mat-form-field>
       <mat-label>Your Name</mat-label>
-      <input matInput class="mx-sm" name="supplyInput" #supplyInput>
+      <input matInput name="supplyInput" #supplyInput>
     </mat-form-field>
     <button mat-icon-button aria-label="Save button" (click)="submitChanges(supplyInput.value)">
       <mat-icon color="accent">done_outline</mat-icon>

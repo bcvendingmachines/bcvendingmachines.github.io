@@ -39,7 +39,6 @@ export class SupplyDisplayComponent implements OnInit {
     if (data){
       this.loaded = true;
     };
-    console.log(this.supply);
   };
 
   logToggle(component: string){

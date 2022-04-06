@@ -23,8 +23,6 @@ export class AppComponent {
   supply5: Supply = {id:5, machine: this.machine5, time_checked: new Date(), coffee: true, short_supply: false, checked_by: "supply5"};
   supply6: Supply = {id:6, machine: this.machine6, time_checked: new Date(), coffee: true, short_supply: false, checked_by: "supply6"};
 
-
-
   constructor(private machineService: MachineService, private supplyService: SupplyService){
   };
 

@@ -10,10 +10,10 @@ export class MachineService {
   private saveUrl: string;
 
   constructor(private http: HttpClient) {
-    // this.machinesUrl = 'https://bcvm.herokuapp.com/machines';
-    // this.saveUrl = 'https://bcvm.herokuapp.com/save';
-    this.machinesUrl = 'http://localhost:8080/machines';
-    this.saveUrl = "http://localhost:8080/saveMachines"
+    this.machinesUrl = 'https://bcvm.herokuapp.com/machines';
+    this.saveUrl = 'https://bcvm.herokuapp.com/saveMachines';
+    // this.machinesUrl = 'http://localhost:8080/machines';
+    // this.saveUrl = "http://localhost:8080/saveMachines"
   }
 
   public getMachines(): Observable<Machine[]> {return this.http.get<Machine[]>(this.machinesUrl)};
