@@ -39,6 +39,7 @@ export class SupplyDisplayComponent implements OnInit {
     if (data){
       this.loaded = true;
     };
+    console.log(this.supply);
   };
 
   logToggle(component: string){
@@ -58,5 +59,5 @@ export class SupplyDisplayComponent implements OnInit {
     this.newSupply.short_supply = this.shortSupplyChecked;
 
     this.supplyService.save(this.newSupply).subscribe(x=>console.log(x));
-  }
+  };
 }

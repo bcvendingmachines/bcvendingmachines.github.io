@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
-import { AppRoutingModule, routingComponents } from './app-routing.module';
+import { AppRoutingModule /*, routingComponents*/ } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
@@ -19,13 +19,15 @@ import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { LayoutModule } from '@angular/cdk/layout';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { DbTestComponent } from './db-test/db-test.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MachineButtonComponent,
     SupplyDisplayComponent,
-    routingComponents
+    /*routingComponents,*/
+    DbTestComponent
   ],
   imports: [
     BrowserModule,

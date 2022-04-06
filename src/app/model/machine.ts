@@ -1,4 +1,4 @@
 export class Machine {
-  id!: string;
+  id!: number;
   name!: string;
 }

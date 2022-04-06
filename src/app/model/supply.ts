@@ -1,6 +1,6 @@
 import { Machine } from "./machine";
 export class Supply {
-  id!: Number;
+  id!: number;
   machine!: Machine;
   coffee!: boolean;
   short_supply!: boolean;

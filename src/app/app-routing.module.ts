@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DbTesterComponent } from './db-tester/db-tester.component';
 const routes: Routes = [
-  { path: 'test', component: DbTesterComponent }
+  // { path: 'test', component: DbTesterComponent }
 ];
 
 @NgModule({
@@ -11,4 +10,4 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 
-export const routingComponents = [DbTesterComponent];
+// export const routingComponents = [];
