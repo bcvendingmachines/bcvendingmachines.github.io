@@ -10,13 +10,13 @@ An application that describes whether a vending machine on campus is on short su
 
 This uses Angular 13, including the Angular CLI. It is the front end for BC Vending Machines. 
 
-The back end is available as [bcvm-API](https://github.com/zachneill/bcvm-api). It uses Spring Boot and connects to a "bcvmdb" mySQL database on port 3306.
+The back end is available as [bcvm-API](https://github.com/zachneill/bcvm-api). It uses Spring Boot and connects to a "bcvmdb" Postgres database on port 3306.
 
 ### To run the application, required technologies are:
 
 - Angular + Angular CLI (port 4200)
 - Spring Boot-compatible IDE (for the [bcvm-API](https://github.com/zachneill/bcvm-api) server) (port 8080)
-- mySQL (port 3306)
+- PostgreSQL (port 3306)
 - npm
 
 ## Scripts
