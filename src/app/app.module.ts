@@ -19,7 +19,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { LayoutModule } from '@angular/cdk/layout';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { DbTestComponent } from './db-test/db-test.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +26,6 @@ import { DbTestComponent } from './db-test/db-test.component';
     MachineButtonComponent,
     SupplyDisplayComponent,
     /*routingComponents,*/
-    DbTestComponent
   ],
   imports: [
     BrowserModule,
