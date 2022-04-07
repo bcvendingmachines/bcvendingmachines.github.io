@@ -12,22 +12,36 @@ This uses Angular 13, including the Angular CLI. It is the front end for BC Vend
 
 The back end is available as [bcvm-API](https://github.com/zachneill/bcvm-api). It uses Spring Boot and connects to a "bcvmdb" Postgres database on port 3306.
 
-### To run the application, required technologies are:
+### To run the application locally, required technologies are:
+
+#### _Front end only ([using Heroku Postgres online database](https://bcvm.herokuapp.com/test))_
 
 - Angular + Angular CLI (port 4200)
-- Spring Boot-compatible IDE (for the [bcvm-API](https://github.com/zachneill/bcvm-api) server) (port 8080)
+- Internet access to [bcvm.herokuapp.com](https://bcvm.herokuapp.com/test)
+
+#### _Full development stack_
+
+- Angular + Angular CLI (port 4200)
+- Spring Boot-compatible environment (for the [bcvm-API](https://github.com/zachneill/bcvm-api) server) (port 8080)
 - PostgreSQL (port 3306)
-- npm
 
 ## Scripts
 
 ### Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app automatically reloads if you change any of the source files.
 
 ### Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+
+### GH Pages
+
+Make sure you npm install [Angular CLI GH Pages](https://www.npmjs.com/package/angular-cli-ghpages).
+
+Then in _PowerShell_, run `ng deploy --base-href=/bcvm/` to deploy it to [zachneill.github.io/bcvm](https://zachneill.github.io/bcvm). 
+
+Run this in PowerShell because Bash mistreats base-href (it's a known issue). You may have to run `Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass` first.
 
 ## Dev Checklist 
 
