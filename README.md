@@ -23,7 +23,7 @@ The back end is available as [bcvm-API](https://github.com/zachneill/bcvm-api). 
 
 - Angular + Angular CLI (port 4200)
 - Spring Boot-compatible environment (for the [bcvm-API](https://github.com/zachneill/bcvm-api) server) (port 8080)
-- PostgreSQL (port 3306)
+- PostgreSQL (port 5432)
 
 ## Scripts
 
