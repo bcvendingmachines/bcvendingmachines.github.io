@@ -1,0 +1,6 @@
+{
+	"appId": "com.bcvm.app",
+	"appName": "BC Vending Machines",
+	"webDir": "dist",
+	"bundledWebRuntime": false
+}
