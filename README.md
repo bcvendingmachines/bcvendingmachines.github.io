@@ -55,7 +55,5 @@ Move everything within `/dist/bc-vending-machines` into `/dist`. Then run `npx c
 
 ## Dev Checklist 
 
-- Button spacing
 - Live reload over location.reload
 - Metadata
-- Tests
