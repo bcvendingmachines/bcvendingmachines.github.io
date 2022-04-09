@@ -37,11 +37,13 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ### GH Pages
 
-Make sure [Angular CLI GH Pages](https://www.npmjs.com/package/angular-cli-ghpages) is installed.
+Make sure [Angular CLI GH Pages](https://www.npmjs.com/package/angular-cli-ghpages) is installed. [Make sure your system variables PATH has Git](https://stackoverflow.com/a/4493004/18721369). Otherwise, you will get an __Error: spawn git ENOENT__ error.
 
-Then in _PowerShell_, run `ng deploy --base-href=/bcvm/` to deploy it to [zachneill.github.io/bcvm](https://zachneill.github.io/bcvm). 
+In _PowerShell_ or _Command Prompt_, run `ng deploy --base-href=/bcvm/` to deploy it to [zachneill.github.io/bcvm](https://zachneill.github.io/bcvm). 
 
-Run this in PowerShell because Bash mistreats base-href (it's a known issue). You may have to run `Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass` first.
+Don't run this in Bash because Bash mistreats base-href (it's a known issue). If using Powershell, you may have to run `Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass` first. Otherwise, you will get an error.
+
+If I publish using Bash, I get __Not allowed to load local resource__ when viewing the [GH Page](https://zachneill.github.io/bcvm). 
 
 ### Android (DOESN'T WORK YET)
 
