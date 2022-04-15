@@ -1,3 +1,32 @@
+<mat-card-header class="loading" *ngIf="!loaded">
+  <mat-card-title>
+    Loading supply...
+    <button mat-icon-button (click)="editMode = !editMode" aria-label="Toggle update">
+      <mat-icon>update</mat-icon>
+      <ng-container> Edit</ng-container>
+    </button>
+  </mat-card-title>
+</mat-card-header>
+<mat-card-content *ngIf="!loaded">
+  <mat-chip-list>
+    <mat-chip>
+      <mat-chip-avatar><mat-spinner color="accent" [diameter]="25"></mat-spinner></mat-chip-avatar>
+      Coffee
+    </mat-chip>
+    <mat-chip>
+      <mat-chip-avatar><mat-spinner color="accent" [diameter]="25"></mat-spinner></mat-chip-avatar>
+      Short Supply
+    </mat-chip>
+    <mat-chip>
+      Checked: <mat-spinner color="accent" [diameter]="25"></mat-spinner>
+    </mat-chip>
+    <mat-chip>
+      By: <mat-spinner color="accent" [diameter]="25"></mat-spinner>
+    </mat-chip>
+  </mat-chip-list>
+  <!-- <mat-spinner></mat-spinner> -->
+</mat-card-content>
+
 <mat-card-header *ngIf="loaded">
   <mat-card-title>
     {{supply.machine.name}}
