@@ -1,8 +1,11 @@
 <div class="background mat-typography app-frame basic-container">
   <p><mat-toolbar style="background-color:#092a52">
-    <span>BC Vending Machines</span>
+    <span>BCVM</span>
+    <button mat-icon-button onclick="location.reload()" aria-label="Toggle refresh">
+      <mat-icon>refresh</mat-icon>
+    </button>
   </mat-toolbar></p>
-  <app-machine-button fxLayout="row wrap" fxLayoutGap="5px" fxLayoutAlign="start" ></app-machine-button>
+  <app-machine-button fxLayout="row wrap" fxLayoutGap="2px" fxLayoutAlign="start" style="margin-left: 10px;"></app-machine-button>
 </div>
 
 <router-outlet></router-outlet>
