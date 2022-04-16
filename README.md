@@ -45,13 +45,17 @@ Don't run this in Bash because Bash mistreats base-href (it's a known issue). If
 
 If I publish using Bash, I get __Not allowed to load local resource__ when viewing the [GH Page](https://zachneill.github.io/bcvm). 
 
-### Android (DOESN'T WORK YET)
+### Android (ONLY WORKS SOMETIMES)
 
 Make sure the [Capacitor](https://capacitorjs.com/docs/getting-started) requirements (core, cli, and android) are installed.
 
+If you recreate the capacitor-config.ts file with npx cap init, make sure you change `webDir:` to `'dist/bc-vending-machines'`.
+
 Run `ng build`
 
-Move everything within `/dist/bc-vending-machines` into `/dist`. Then run `npx cap add android`
+Run `npx cap add android`
+
+`npx cap open android` opens the project in Android Studio. Follow [these steps](https://capacitorjs.com/docs/getting-started/environment-setup#android-development) to ensure ideal configuration.
 
 ## Dev Checklist 
 

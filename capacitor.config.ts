@@ -1,9 +1,9 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.bcvm.app',
-  appName: 'BC Vending Machines',
-  webDir: 'dist',
+  appId: 'com.znsus.bcvm',
+  appName: 'bc-vending-machines',
+  webDir: 'dist/bc-vending-machines',
   bundledWebRuntime: false
 };
 

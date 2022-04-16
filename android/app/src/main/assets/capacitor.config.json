@@ -1,0 +1,6 @@
+{
+	"appId": "com.znsus.bcvm",
+	"appName": "bc-vending-machines",
+	"webDir": "dist/bc-vending-machines",
+	"bundledWebRuntime": false
+}
