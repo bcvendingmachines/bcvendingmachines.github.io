@@ -21,4 +21,4 @@ IntelliJ IDEA was used to create and maintain this API. To run the server, open 
 
 ### Full development stack (ports 5432, 8080, 4200)
 
-In addition to the above setup, you will need to check out the [README in the initial directory](https://github.com/zachneill/bcvm#bc-vending-machines).
+In addition to the above setup, you will need to set up the front end, so check out the [README in the initial directory](https://github.com/zachneill/bcvm#bc-vending-machines).
