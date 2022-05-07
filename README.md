@@ -26,7 +26,7 @@ This uses Angular 13. This initial directory is the front end seen on [GH Pages]
 #### _Full development stack_ **
 
 - [Angular/Angular CLI](https://angular.io/guide/setup-local#install-the-angular-cli) on port 4200
-- Spring Boot on port 8080
+- Spring Boot on port 8080 *
 - [PostgreSQL](https://www.postgresql.org/download/) on port 5432 *
 
 \* [Click here](https://github.com/zachneill/bcvm/tree/master/api#bcvm-back-end-api) for back end setup documentation
