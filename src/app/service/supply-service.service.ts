@@ -9,8 +9,11 @@ export class SupplyService {
   private supplyUrl: string;
   private saveUrl: string;
   constructor(private http: HttpClient) {
+    //PRODUCTION URLs
     this.supplyUrl = 'https://bcvm.herokuapp.com/supply/';
     this.saveUrl = 'https://bcvm.herokuapp.com/save';
+
+    //DEVELOPMENT URLs
     // this.supplyUrl = "http://localhost:8080/supply/";
     // this.saveUrl = "http://localhost:8080/save"
   }
