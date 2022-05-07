@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Machine</title>
+</head>
+<body>
+    <h1>Machines</h1>
+    <div th:each="machine: ${machines}">
+        <p th:text="${machine.id}"></p>
+    </div>
+
+    <a href="/test/supply">Test supply 1</a>
+
+</body>
+</html>
