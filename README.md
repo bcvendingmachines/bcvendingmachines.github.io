@@ -9,7 +9,7 @@ An application that describes whether a vending machine on campus is on short su
 
 ## Technologies
 
-This uses Angular 13. This initial directory is the front end seen on [GH Pages](https://zachneill.github.io/bcvm). The back end is in the `api` folder. It uses Spring Boot and connects to [the "bcvmdb" Postgres database](https://bcvm.herokuapp.com). The server can be run locally ([documentation here](https://github.com/zachneill/bcvm/tree/master/api#bcvm-back-end-api)).
+This application uses Angular 13. The root directory is the front end seen on [GH Pages](https://zachneill.github.io/bcvm). The back end is in the `api` folder. It uses Spring Boot and connects to [the "bcvmdb" Postgres database](https://bcvm.herokuapp.com). The server can be run locally ([documentation here](https://github.com/zachneill/bcvm/tree/master/api#bcvm-back-end-api)).
 
 ### To run the application locally, required technologies are:
 
@@ -69,4 +69,4 @@ Run `ng build`, then `npx cap add android`.
 
 ## Dev Checklist 
 
-- Live reload over location.reload
+- Subscribing over location.reload
