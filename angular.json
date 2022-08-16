@@ -116,5 +116,7 @@
       }
     }
   },
-  "defaultProject": "bc-vending-machines"
+  "cli": {
+    "analytics": false
+  }
 }
