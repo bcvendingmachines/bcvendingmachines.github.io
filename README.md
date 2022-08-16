@@ -9,7 +9,7 @@ An application that describes whether a vending machine on campus is on short su
 
 ## Technologies
 
-This application uses Angular 14. The root directory is the front end seen on [GH Pages](https://zachneill.github.io/bcvm). The back end uses Spring Boot with Java 8 It is in the `api` branch, and each commit auto-deploys to [Heroku](https://bcvm.herokuapp.com). The server can be run locally ([documentation here](https://github.com/zachneill/bcvm/tree/api#bcvm-back-end-api)).
+This application uses Angular 14. The root directory is the front end seen on [GH Pages](https://zachneill.github.io/bcvm). The back end uses Spring Boot with Java 8. It is in the `api` branch (and `api-develop` branch for development), and each commit auto-deploys to [Heroku](https://bcvm.herokuapp.com). The API can be run locally ([documentation here](https://github.com/zachneill/bcvm/tree/api#bcvm-back-end-api)).
 
 ### To run the application locally, required technologies are:
 
