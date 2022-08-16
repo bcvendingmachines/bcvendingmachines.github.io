@@ -9,8 +9,6 @@ import org.springframework.stereotype.Component;
 public class CustomProperties {
     String url;
 
-    private final int timeoutInMilliSeconds = 1000;
-
     public String getUrl() {
         return url;
     }
