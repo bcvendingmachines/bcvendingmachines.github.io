@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<resources>
-    <string name="app_name">bc-vending-machines</string>
-    <string name="title_activity_main">bc-vending-machines</string>
-    <string name="package_name">com.znsus.bcvm</string>
-    <string name="custom_url_scheme">com.znsus.bcvm</string>
-</resources>

@@ -1,72 +1,24 @@
-# BC Vending Machines
+# BCVM Back End API
 
-![GitHub package.json version (branch)](https://img.shields.io/github/package-json/v/zachneill/bcvm/master?label=version&style=for-the-badge)
-![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/zachneill/bcvm/@angular/core?label=angular&style=for-the-badge)
+![Version](https://img.shields.io/badge/version-1.0.0-red?style=for-the-badge)
 ![Spring Boot Version](https://img.shields.io/badge/spring%20boot-2.6.4-green?style=for-the-badge)
-![GitHub last commit](https://img.shields.io/github/last-commit/zachneill/bcvm?color=purple&style=for-the-badge) 
+![Java Version](https://img.shields.io/badge/java-8-orange?style=for-the-badge)
+![GitHub last commit](https://img.shields.io/github/last-commit/zachneill/bc-vending-machines?color=purple&style=for-the-badge) 
 
-An application that describes whether a vending machine on campus is on short supply or is out of coffee. 
+The back end REST API for the BC Vending Machines app. This uses Spring Boot 2.6.4 alongside Java 8. The production build is on Heroku at [bcvm.herokuapp.com](https://bcvm.herokuapp.com/test). The Angular front end is available in the initial directory of the [BCVM](https://github.com/zachneill/bcvm) repo.
 
-## Technologies
+## Running the Application
 
-This application uses Angular 13. The root directory is the front end seen on [GH Pages](https://zachneill.github.io/bcvm). The back end is in the `api` folder. It uses Spring Boot and connects to [the "bcvmdb" Postgres database](https://bcvm.herokuapp.com). The server can be run locally ([documentation here](https://github.com/zachneill/bcvm/tree/master/api#bcvm-back-end-api)).
+### PostgreSQL on port 5432
 
-### To run the application locally, required technologies are:
+Locally, the repo intends to connect to a Postgres database called "bcvmdb" that runs on the default port 5432. [Install PostgreSQL here](https://www.postgresql.org/download/). You may need to populate the database with the `schema.sql` and then the `data.sql` SQL file in `api/src/main/resources`.
 
-#### _Front end only ([using Heroku Postgres online database](https://bcvm.herokuapp.com/test))_
+### Spring Boot on port 8080
 
-- [Angular/Angular CLI](https://angular.io/guide/setup-local#install-the-angular-cli) on port 4200
-- Internet access to [bcvm.herokuapp.com](https://bcvm.herokuapp.com/)
+For development, use the provided "Local configuration" in `api/src/main/resources/application.properties`. For production, comment it out.
 
-#### _API only_ *
+IntelliJ IDEA was used to create and maintain this API. To run the server, open the api folder as a project in a Java IDE and run it that way. Or, run `mvn spring-boot:run`. This requires some setup via [installing Maven](https://mkyong.com/maven/how-to-install-maven-in-windows/), cd'ing into the directory where pom.xml is located in, and running `mvn spring-boot:run`. [This may help](https://stackoverflow.com/a/56616547).
 
-- Spring Boot on port 8080
-- [PostgreSQL](https://www.postgresql.org/download/) on port 5432
+### Full development stack (ports 5432, 8080, 4200)
 
-#### _Full development stack_ **
-
-- [Angular/Angular CLI](https://angular.io/guide/setup-local#install-the-angular-cli) on port 4200
-- Spring Boot on port 8080 *
-- [PostgreSQL](https://www.postgresql.org/download/) on port 5432 *
-
-\* [Click here](https://github.com/zachneill/bcvm/tree/master/api#bcvm-back-end-api) for back end setup documentation
-
-** For the full stack to work, use the `supply-service.service.ts` and `machine-service.service.ts` development urls in `src\app\service`. 
-
-## Scripts
-
-### Development server
-
-Make sure to run `npm install` so you have all the dependencies. 
-
-For the front end, run `ng serve` for a dev server. Navigate to the server at `http://localhost:4200/`. The app auto-reloads if you change any source files. 
-
-For the back end, [go to this API README file](https://github.com/zachneill/bcvm/tree/master/api#bcvm-back-end-api). The server is `http://localhost:8080/`.
-
-### Heroku
-
-This is for the back end. It requires [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli#install-the-heroku-cli) installed. Commit and push all changes. Then run `git push heroku master`.
-
-For first-time setup, you may need to run `heroku login` and `heroku git:remote -a bcvm`. This affords Heroku deployment access. Additionally, only Heroku collaborators can deploy. In Heroku, the only collaborator is zacharyneill@gmail.com.
-
-### GH Pages
-
-This is for the front end. Make sure [Angular CLI GH Pages](https://www.npmjs.com/package/angular-cli-ghpages) is available with `ng add` or `npm install`. [Make sure your system variables PATH has Git](https://stackoverflow.com/a/4493004/18721369). Otherwise, you will get an __Error: spawn git ENOENT__ error.
-
-In _PowerShell_, _Command Prompt_, or a non-Bash terminal, run `ng deploy --base-href=/bcvm/` to deploy it to [zachneill.github.io/bcvm](https://zachneill.github.io/bcvm). 
-
-Don't run this in Bash because Bash mistreats base-href (it's a known issue). If I publish using Bash, I get __Not allowed to load local resource__ when viewing the [GH Page](https://zachneill.github.io/bcvm). If using Powershell, you may have to run `Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass` first. Otherwise, you will get an error. 
-
-### Android (RARELY WORKS)
-
-Make sure the [Capacitor](https://capacitorjs.com/docs/getting-started) requirements (core, cli, and android) are installed.
-
-If you recreate the capacitor-config.ts file with npx cap init, make sure `webDir:` is `'dist/bc-vending-machines'`.
-
-Run `ng build`, then `npx cap add android`.
-
-`npx cap open android` opens the project in Android Studio. Follow [these steps](https://capacitorjs.com/docs/getting-started/environment-setup#android-development) to ensure ideal configuration.
-
-## Dev Checklist 
-
-- Subscribing over location.reload
+In addition to the above setup, you will need to set up the front end, so check out the [README in the initial directory](https://github.com/zachneill/bcvm#bc-vending-machines).
