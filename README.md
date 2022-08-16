@@ -9,11 +9,11 @@ An application that describes whether a vending machine on campus is on short su
 
 ## Technologies
 
-This application uses Angular 13. The root directory is the front end seen on [GH Pages](https://zachneill.github.io/bcvm). The back end is in the `api` folder. It uses Spring Boot and connects to [the "bcvmdb" Postgres database](https://bcvm.herokuapp.com). The server can be run locally ([documentation here](https://github.com/zachneill/bcvm/tree/master/api#bcvm-back-end-api)).
+This application uses Angular 13. The root directory is the front end seen on [GH Pages](https://zachneill.github.io/bcvm). The back end is in the `api` branch. It uses Spring Boot and connects to [the "bcvmdb" Postgres database](https://bcvm.herokuapp.com). The server can be run locally ([documentation here](https://github.com/zachneill/bcvm/tree/api#bcvm-back-end-api)).
 
 ### To run the application locally, required technologies are:
 
-#### _Front end only ([using Heroku Postgres online database](https://bcvm.herokuapp.com/test))_
+#### _Front end only ([using Heroku Postgres online database](https://bcvm.herokuapp.com))_
 
 - [Angular/Angular CLI](https://angular.io/guide/setup-local#install-the-angular-cli) on port 4200
 - Internet access to [bcvm.herokuapp.com](https://bcvm.herokuapp.com/)
@@ -29,9 +29,9 @@ This application uses Angular 13. The root directory is the front end seen on [G
 - Spring Boot on port 8080 *
 - [PostgreSQL](https://www.postgresql.org/download/) on port 5432 *
 
-\* [Click here](https://github.com/zachneill/bcvm/tree/master/api#bcvm-back-end-api) for back end setup documentation
+\* [Click here](https://github.com/zachneill/bcvm/tree/api#bcvm-back-end-api) for back end setup documentation
 
-** For the full stack to work, use the `supply-service.service.ts` and `machine-service.service.ts` development urls in `src\app\service`. 
+** For the full stack to work locally, use the `supply-service.service.ts` and `machine-service.service.ts` development urls in `src\app\service`. 
 
 ## Scripts
 
@@ -41,11 +41,11 @@ Make sure to run `npm install` so you have all the dependencies.
 
 For the front end, run `ng serve` for a dev server. Navigate to the server at `http://localhost:4200/`. The app auto-reloads if you change any source files. 
 
-For the back end, [go to this API README file](https://github.com/zachneill/bcvm/tree/master/api#bcvm-back-end-api). The server is `http://localhost:8080/`.
+For the back end, [go to this API README](https://github.com/zachneill/bcvm/tree/api#bcvm-back-end-api). The server is `http://localhost:8080/`.
 
 ### Heroku
 
-This is for the back end. It requires [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli#install-the-heroku-cli) installed. Commit and push all changes. Then run `git push heroku master`.
+Heroku hosts the database/API. Currently, Heroku automatically builds the latest commit in the api branch. It requires the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli#install-the-heroku-cli) installed. Commit and push all changes. Then run `git push heroku master`.
 
 For first-time setup, you may need to run `heroku login` and `heroku git:remote -a bcvm`. This affords Heroku deployment access. Additionally, only Heroku collaborators can deploy. In Heroku, the only collaborator is zacharyneill@gmail.com.
 
@@ -70,3 +70,4 @@ Run `ng build`, then `npx cap add android`.
 ## Dev Checklist 
 
 - Subscribing over location.reload
+- Consider piping and subscription-based foundation
