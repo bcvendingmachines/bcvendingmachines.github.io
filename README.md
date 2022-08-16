@@ -9,9 +9,19 @@ An application that describes whether a vending machine on campus is on short su
 
 ## Technologies
 
-This application uses Angular 13. The root directory is the front end seen on [GH Pages](https://zachneill.github.io/bcvm). The back end is in the `api` branch. It uses Spring Boot and connects to [the "bcvmdb" Postgres database](https://bcvm.herokuapp.com). The server can be run locally ([documentation here](https://github.com/zachneill/bcvm/tree/api#bcvm-back-end-api)).
+This application uses Angular 14. The root directory is the front end seen on [GH Pages](https://zachneill.github.io/bcvm). The back end uses Spring Boot with Java 8 It is in the `api` branch, and each commit auto-deploys to [Heroku](https://bcvm.herokuapp.com). The server can be run locally ([documentation here](https://github.com/zachneill/bcvm/tree/api#bcvm-back-end-api)).
 
 ### To run the application locally, required technologies are:
+
+#### _Full development stack_ **
+
+- [Angular/Angular CLI](https://angular.io/guide/setup-local#install-the-angular-cli) on port 4200
+- Spring Boot on port 8080 *
+- [PostgreSQL](https://www.postgresql.org/download/) on port 5432 *
+
+\* [Click here](https://github.com/zachneill/bcvm/tree/api#bcvm-back-end-api) for back end setup documentation
+
+** For the full stack to work locally, use the `supply-service.service.ts` and `machine-service.service.ts` development urls in `src\app\service`.
 
 #### _Front end only ([using Heroku Postgres online database](https://bcvm.herokuapp.com))_
 
@@ -23,16 +33,6 @@ This application uses Angular 13. The root directory is the front end seen on [G
 - Spring Boot on port 8080
 - [PostgreSQL](https://www.postgresql.org/download/) on port 5432
 
-#### _Full development stack_ **
-
-- [Angular/Angular CLI](https://angular.io/guide/setup-local#install-the-angular-cli) on port 4200
-- Spring Boot on port 8080 *
-- [PostgreSQL](https://www.postgresql.org/download/) on port 5432 *
-
-\* [Click here](https://github.com/zachneill/bcvm/tree/api#bcvm-back-end-api) for back end setup documentation
-
-** For the full stack to work locally, use the `supply-service.service.ts` and `machine-service.service.ts` development urls in `src\app\service`. 
-
 ## Scripts
 
 ### Development server
@@ -43,21 +43,15 @@ For the front end, run `ng serve` for a dev server. Navigate to the server at `h
 
 For the back end, [go to this API README](https://github.com/zachneill/bcvm/tree/api#bcvm-back-end-api). The server is `http://localhost:8080/`.
 
-### Heroku
-
-Heroku hosts the database/API. Currently, Heroku automatically builds the latest commit in the api branch. It requires the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli#install-the-heroku-cli) installed. Commit and push all changes. Then run `git push heroku master`.
-
-For first-time setup, you may need to run `heroku login` and `heroku git:remote -a bcvm`. This affords Heroku deployment access. Additionally, only Heroku collaborators can deploy. In Heroku, the only collaborator is zacharyneill@gmail.com.
-
 ### GH Pages
 
-This is for the front end. Make sure [Angular CLI GH Pages](https://www.npmjs.com/package/angular-cli-ghpages) is available with `ng add` or `npm install`. [Make sure your system variables PATH has Git](https://stackoverflow.com/a/4493004/18721369). Otherwise, you will get an __Error: spawn git ENOENT__ error.
+This is for the front end. [Make sure your system variables PATH has Git](https://stackoverflow.com/a/4493004/18721369). Otherwise, you may get an __Error: spawn git ENOENT__ error.
 
-In _PowerShell_, _Command Prompt_, or a non-Bash terminal, run `ng deploy --base-href=/bcvm/` to deploy it to [zachneill.github.io/bcvm](https://zachneill.github.io/bcvm). 
+In _PowerShell_, _Command Prompt_, or a non-Bash terminal, run `npm run deploy` to deploy it to [zachneill.github.io/bcvm](https://zachneill.github.io/bcvm). 
 
-Don't run this in Bash because Bash mistreats base-href (it's a known issue). If I publish using Bash, I get __Not allowed to load local resource__ when viewing the [GH Page](https://zachneill.github.io/bcvm). If using Powershell, you may have to run `Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass` first. Otherwise, you will get an error. 
+Don't run this in Bash because Bash mistreats base-href (it's a known issue). If publishing using Bash, you may get __Not allowed to load local resource__ when viewing the [GH Page](https://zachneill.github.io/bcvm). If using Powershell, you may have to run `Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass` first. Otherwise, you will get an error. 
 
-### Android (RARELY WORKS)
+### Android (WORK IN PROGRESS)
 
 Make sure the [Capacitor](https://capacitorjs.com/docs/getting-started) requirements (core, cli, and android) are installed.
 
