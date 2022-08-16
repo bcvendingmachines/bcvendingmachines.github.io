@@ -9,16 +9,15 @@ The back end REST API for the BC Vending Machines app. This uses Spring Boot 2.6
 
 ## Running the Application
 
-### PostgreSQL on port 5432
-
-When you install PostgreSQL, a default option is starting it when your PC boots up. This initializes the connection. You can also start it in [Windows Services](https://stackoverflow.com/a/53062239).
-Locally, the project intends to connect to a Postgres database called "postgres" that runs on the default port 5432. [Install PostgreSQL here](https://www.postgresql.org/download/). You may need to populate the database with the `schema.sql` followed by the `data.sql` SQL file in `api/src/main/resources`.
-
 ### Spring Boot on port 8080
 
-For development, use the provided "Local configuration" in `api/src/main/resources/application.properties`. For production, comment it out.
+For development, use `api-develop`. `api-develop`. It includes "Local configuration" in `api/src/main/resources/application.properties`. For production, it must be commented out. Because of this, a recommendation is to use `git pull --rebase` instead of `git pull`. 
 
-IntelliJ IDEA was used to create and maintain this API. To run the server, check out the [api branch](https://github.com/zachneill/bcvm/tree/api#bcvm-back-end-api) in a Java IDE and run it that way. Or, run `mvn spring-boot:run`. This requires some setup via [installing Maven](https://mkyong.com/maven/how-to-install-maven-in-windows/), cd'ing into the directory where pom.xml is located in, and running `mvn spring-boot:run`. [This may help](https://stackoverflow.com/a/56616547).
+IntelliJ IDEA was used to create and maintain this API. To run the server, check out the `api-develop` branch in a Java IDE and run it that way. Or, run `mvn spring-boot:run`. This requires some setup via [installing Maven](https://mkyong.com/maven/how-to-install-maven-in-windows/), cd'ing into the directory where pom.xml is located in, and running `mvn spring-boot:run`. [This may help](https://stackoverflow.com/a/56616547). 
+
+### PostgreSQL on port 5432
+
+[Install PostgreSQL here](https://www.postgresql.org/download/). A default option is starting it when your PC boots up. This initializes the connection. You can also start it in [Windows Services](https://stackoverflow.com/a/53062239). Locally, the project intends to connect to a Postgres database called "postgres" that runs on the default port 5432. You may need to populate the database with the `schema.sql` followed by the `data.sql` SQL file in `api/src/main/resources`.
 
 ### Full development stack (ports 5432, 8080, 4200)
 
