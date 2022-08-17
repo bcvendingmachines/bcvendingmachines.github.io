@@ -11,11 +11,11 @@ export class MachineService {
 
   constructor(private http: HttpClient) {
     //PRODUCTION URLs
-    this.machinesUrl = 'https://bcvm.herokuapp.com/machines'
-    this.saveUrl = 'https://bcvm.herokuapp.com/saveMachines'
+    // this.machinesUrl = 'https://bcvm.herokuapp.com/machines'
+    // this.saveUrl = 'https://bcvm.herokuapp.com/saveMachines'
     //DEVELOPMENT URLs
-    // this.machinesUrl = 'http://localhost:8080/machines'
-    // this.saveUrl = "http://localhost:8080/saveMachines"
+    this.machinesUrl = 'http://localhost:8080/machines'
+    this.saveUrl = "http://localhost:8080/saveMachines"
   }
 
   public getMachines(): Observable<Machine[]> {return this.http.get<Machine[]>(this.machinesUrl)}
