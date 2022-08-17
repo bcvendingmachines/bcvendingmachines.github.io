@@ -22,7 +22,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { MachinePipe } from './pipes/machine.pipe';
 import { MatSnackBarModule} from "@angular/material/snack-bar";
 
 @NgModule({
@@ -30,7 +29,6 @@ import { MatSnackBarModule} from "@angular/material/snack-bar";
     AppComponent,
     MachineButtonComponent,
     SupplyDisplayComponent,
-    MachinePipe,
     /*routingComponents,*/
   ],
   imports: [
