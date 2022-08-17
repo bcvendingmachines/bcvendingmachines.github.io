@@ -64,4 +64,3 @@ Run `ng build`, then `npx cap add android`.
 ## Dev Checklist 
 
 - Security measures
-- Post and get error handling
