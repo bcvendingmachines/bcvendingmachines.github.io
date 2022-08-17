@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "bc-vending-machines": {
+    "bcvm": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/bc-vending-machines",
+            "outputPath": "dist/bcvm",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -76,10 +76,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "bc-vending-machines:build:production"
+              "browserTarget": "bcvm:build:production"
             },
             "development": {
-              "browserTarget": "bc-vending-machines:build:development"
+              "browserTarget": "bcvm:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -87,7 +87,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "bc-vending-machines:build"
+            "browserTarget": "bcvm:build"
           }
         },
         "test": {

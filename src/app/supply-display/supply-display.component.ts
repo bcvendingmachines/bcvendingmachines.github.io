@@ -26,15 +26,11 @@ export class SupplyDisplayComponent implements OnInit {
 
   ngOnInit(): void {
     this.supplyService.getSupply(this.machine.id).subscribe((supply:Supply) => {
-      this.populateSupply(supply)
+      this.supply = supply
+      if (supply){
+        this.loaded = true
+      }
     })
-  }
-
-  populateSupply(data: Supply): void {
-    this.supply = data
-    if (data){
-      this.loaded = true
-    }
   }
 
   logToggle(component: string){
@@ -44,11 +40,12 @@ export class SupplyDisplayComponent implements OnInit {
       this.supply.short_supply = !this.supply.short_supply
     }
   }
-  submitChanges(checked_by:string): void {
+  submitChanges(checked_by: string, event: SubmitEvent): void {
+    event.preventDefault()
     this.newSupply = new Supply()
     this.newSupply.machine = this.supply.machine
     this.newSupply.time_checked = new Date()
-    this.newSupply.checked_by = !checked_by? "Anon.": checked_by
+    this.newSupply.checked_by = !checked_by ? "Anon.": checked_by
 
     this.newSupply.coffee = this.supply.coffee
     this.newSupply.short_supply = this.supply.short_supply
@@ -56,9 +53,10 @@ export class SupplyDisplayComponent implements OnInit {
       next: () => {
         this.supply = this.newSupply
         this.editMode = false
-        this.snackBar.open("Update successful!")
+        this.snackBar.open("Update successful!", "Dismiss", {duration: 5000})
       }, error: () => {
-        this.snackBar.open("Unable to connect to database. Please try again later")
+        this.snackBar.open("Unable to connect to database. Please try again later", "Reload Page", {duration: 8000})
+          .onAction().subscribe(()=> location.reload())
       }
     })
   }

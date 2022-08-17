@@ -21,7 +21,7 @@ This application uses Angular 14. The root directory is the front end seen on [G
 
 \* [Click here](https://github.com/zachneill/bcvm/tree/api#bcvm-back-end-api) for back end setup documentation
 
-** For the full stack to work locally, use the `supply-service.service.ts` and `machine-service.service.ts` development urls in `src\app\service`.
+** For the full stack to work locally, use the correct configs in `configs.ts` in `src\app\service`.
 
 #### _Front end only ([using Heroku Postgres online database](https://bcvm.herokuapp.com))_
 
@@ -55,7 +55,7 @@ Don't run this in Bash because Bash mistreats base-href (it's a known issue). If
 
 Make sure the [Capacitor](https://capacitorjs.com/docs/getting-started) requirements (core, cli, and android) are installed.
 
-If you recreate the capacitor-config.ts file with npx cap init, make sure `webDir:` is `'dist/bc-vending-machines'`.
+If you recreate the capacitor-config.ts file with npx cap init, make sure `webDir:` is `'dist/bcvm'`.
 
 Run `ng build`, then `npx cap add android`.
 
