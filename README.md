@@ -21,7 +21,7 @@ This application uses Angular 14. The root directory is the front end seen on [G
 
 \* [Click here](https://github.com/zachneill/bcvm/tree/api#bcvm-back-end-api) for back end setup documentation
 
-** For the full stack to work locally, use the correct configs in `configs.ts` in `src\app\service`.
+** For the full stack to work locally, use the correct configs in `configs.ts` in `src\app\service`. Changes to the configs shouldn't be pushed and are in the .gitignore file.
 
 #### _Front end only ([using Heroku Postgres online database](https://bcvm.herokuapp.com))_
 
