@@ -6,19 +6,19 @@ import { Supply } from '../model/supply';
   providedIn: 'root'
 })
 export class SupplyService {
-  private supplyUrl: string;
-  private saveUrl: string;
+  private readonly supplyUrl: string;
+  private readonly saveUrl: string;
   constructor(private http: HttpClient) {
     //PRODUCTION URLs
-    this.supplyUrl = 'https://bcvm.herokuapp.com/supply/';
-    this.saveUrl = 'https://bcvm.herokuapp.com/save';
+    // this.supplyUrl = 'https://bcvm.herokuapp.com/supply/';
+    // this.saveUrl = 'https://bcvm.herokuapp.com/save';
 
     //DEVELOPMENT URLs
-    // this.supplyUrl = "http://localhost:8080/supply/";
-    // this.saveUrl = "http://localhost:8080/save"
+    this.supplyUrl = "http://localhost:8080/supply/";
+    this.saveUrl = "http://localhost:8080/save"
   }
 
-  public getSupply(id:number) : Observable<Supply> {return this.http.get<Supply>(this.supplyUrl+id)};
+  public getSupply(id:number) : Observable<Supply> { return this.http.get<Supply>(this.supplyUrl + id) };
 
-  public save(supply: Supply) {return this.http.post(this.saveUrl, supply)};
+  public save(supply: Supply): Observable<Supply> { return this.http.post<Supply>(this.saveUrl, supply) }
 }

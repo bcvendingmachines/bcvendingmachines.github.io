@@ -8,7 +8,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy": "ng deploy --base-href=/bcvm/"
+    "deploy": "ng deploy --base-href=/bcvm/",
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {
@@ -33,12 +34,20 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^14.1.2",
+    "@angular-eslint/builder": "14.0.2",
+    "@angular-eslint/eslint-plugin": "14.0.2",
+    "@angular-eslint/eslint-plugin-template": "14.0.2",
+    "@angular-eslint/schematics": "14.0.2",
+    "@angular-eslint/template-parser": "14.0.2",
     "@angular/cli": "^14.1.2",
     "@angular/compiler-cli": "^14.1.2",
     "@capacitor/cli": "^3.7.0",
     "@types/jasmine": "^4.0.3",
     "@types/node": "^18.7.5",
+    "@typescript-eslint/eslint-plugin": "5.29.0",
+    "@typescript-eslint/parser": "5.29.0",
     "angular-cli-ghpages": "^1.0.3",
+    "eslint": "^8.18.0",
     "jasmine-core": "^4.3.0",
     "karma": "^6.4.0",
     "karma-chrome-launcher": "^3.1.1",
