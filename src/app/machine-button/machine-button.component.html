@@ -4,6 +4,6 @@
 <mat-card
   class="grid-container"
   fxFlex.gt-xs="49.5%"
-  *ngFor="let machine of machines$ | async; index as i">
+  *ngFor="let machine of machines$ | async">
   <app-supply-display [machine]="machine"></app-supply-display>
 </mat-card>
