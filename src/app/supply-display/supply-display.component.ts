@@ -4,6 +4,7 @@ import { SupplyService } from '../service/supply-service.service'
 import { MatAccordion } from '@angular/material/expansion'
 import { ViewChild } from '@angular/core'
 import {Machine} from "../model/machine"
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-supply-display',
@@ -20,7 +21,7 @@ export class SupplyDisplayComponent implements OnInit {
   @Input() machine!: Machine
   @ViewChild(MatAccordion) accordion!: MatAccordion
 
-  constructor(private supplyService: SupplyService) {
+  constructor(private supplyService: SupplyService, private snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -51,9 +52,14 @@ export class SupplyDisplayComponent implements OnInit {
 
     this.newSupply.coffee = this.supply.coffee
     this.newSupply.short_supply = this.supply.short_supply
-    this.supplyService.save(this.newSupply).subscribe(()=>{
-      this.supply = this.newSupply
-      this.editMode = false
+    this.supplyService.save(this.newSupply).subscribe({
+      next: () => {
+        this.supply = this.newSupply
+        this.editMode = false
+        this.snackBar.open("Update successful!")
+      }, error: () => {
+        this.snackBar.open("Unable to connect to database. Please try again later")
+      }
     })
   }
 }

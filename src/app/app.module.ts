@@ -23,7 +23,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { MachinePipe } from './pipes/machine.pipe';
-
+import { MatSnackBarModule} from "@angular/material/snack-bar";
 
 @NgModule({
   declarations: [
@@ -53,6 +53,7 @@ import { MachinePipe } from './pipes/machine.pipe';
     LayoutModule,
     FlexLayoutModule,
     MatProgressSpinnerModule,
+    MatSnackBarModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the application is stable
