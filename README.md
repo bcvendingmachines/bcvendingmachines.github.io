@@ -63,5 +63,6 @@ Run `ng build`, then `npx cap add android`.
 
 ## Dev Checklist 
 
+- Security measures
 - Subscribing over location.reload
 - Consider piping and subscription-based foundation
