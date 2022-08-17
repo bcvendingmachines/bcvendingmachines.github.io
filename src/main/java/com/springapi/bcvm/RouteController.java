@@ -24,13 +24,13 @@ public class RouteController {
 
     @PostMapping("/saveMachines")
     @ResponseBody
-    void saveMachines(@RequestBody Machine machine){
-        machineRepository.save(machine);
+    Machine saveMachines(@RequestBody Machine machine){
+        return machineRepository.save(machine);
     }
 
     @PostMapping("/save")
     @ResponseBody
-    void save(@RequestBody Supply supply){
-        supplyRepository.save(supply);
+    Supply save(@RequestBody Supply supply){
+        return supplyRepository.save(supply);
     }
 }
