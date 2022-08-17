@@ -23,6 +23,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
 
 @NgModule({
   declarations: [
@@ -31,34 +32,35 @@ import { MatSnackBarModule} from "@angular/material/snack-bar";
     SupplyDisplayComponent,
     /*routingComponents,*/
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    HttpClientModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatExpansionModule,
-    MatChipsModule,
-    MatIconModule,
-    MatSlideToggleModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatGridListModule,
-    MatCardModule,
-    MatMenuModule,
-    LayoutModule,
-    FlexLayoutModule,
-    MatProgressSpinnerModule,
-    MatSnackBarModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: environment.production,
-      // Register the ServiceWorker as soon as the application is stable
-      // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000'
-    })
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        HttpClientModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatExpansionModule,
+        MatChipsModule,
+        MatIconModule,
+        MatSlideToggleModule,
+        MatInputModule,
+        MatFormFieldModule,
+        MatGridListModule,
+        MatCardModule,
+        MatMenuModule,
+        LayoutModule,
+        FlexLayoutModule,
+        MatProgressSpinnerModule,
+        MatSnackBarModule,
+        ServiceWorkerModule.register('ngsw-worker.js', {
+            enabled: environment.production,
+            // Register the ServiceWorker as soon as the application is stable
+            // or after 30 seconds (whichever comes first).
+            registrationStrategy: 'registerWhenStable:30000'
+        }),
+        MatProgressBarModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

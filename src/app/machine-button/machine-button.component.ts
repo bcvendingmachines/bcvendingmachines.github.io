@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import { Machine } from '../model/machine';
 import { MachineService } from '../service/machine-service.service';
-import {Observable, of} from "rxjs";
+import {lastValueFrom, Observable, of} from "rxjs";
 
 @Component({
   selector: 'app-machine-button',
@@ -12,11 +12,15 @@ export class MachineButtonComponent {
   machines$: Observable<Machine[]> | undefined
   loaded = false
   constructor(private machineService: MachineService) {
-    this.machineService.getMachines().subscribe((machines)=>{
+    this.getMachines().then((machines) => {
       if (machines){
         this.loaded = true
         this.machines$ = of(machines)
       }
     })
+  }
+  
+  async getMachines(): Promise<Machine[]> {
+    return await lastValueFrom(this.machineService.getMachines())
   }
 }

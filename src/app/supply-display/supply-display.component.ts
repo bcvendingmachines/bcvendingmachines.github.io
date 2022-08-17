@@ -5,6 +5,7 @@ import { MatAccordion } from '@angular/material/expansion'
 import { ViewChild } from '@angular/core'
 import {Machine} from "../model/machine"
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {first} from "rxjs";
 
 @Component({
   selector: 'app-supply-display',
@@ -25,7 +26,7 @@ export class SupplyDisplayComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.supplyService.getSupply(this.machine.id).subscribe((supply:Supply) => {
+    this.supplyService.getSupply(this.machine.id).pipe(first()).subscribe((supply:Supply) => {
       this.supply = supply
       if (supply){
         this.loaded = true
@@ -49,14 +50,14 @@ export class SupplyDisplayComponent implements OnInit {
 
     this.newSupply.coffee = this.supply.coffee
     this.newSupply.short_supply = this.supply.short_supply
-    this.supplyService.save(this.newSupply).subscribe({
+    this.supplyService.save(this.newSupply).pipe(first()).subscribe({
       next: () => {
         this.supply = this.newSupply
         this.editMode = false
         this.snackBar.open("Update successful!", "Dismiss", {duration: 5000})
       }, error: () => {
         this.snackBar.open("Unable to connect to database. Please try again later", "Reload Page", {duration: 8000})
-          .onAction().subscribe(()=> location.reload())
+          .onAction().pipe(first()).subscribe(()=> location.reload())
       }
     })
   }

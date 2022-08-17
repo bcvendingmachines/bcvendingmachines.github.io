@@ -1,12 +1,24 @@
-<mat-card-header class="loading" *ngIf="!loaded">
+<mat-card-header *ngIf="!loaded">
   <mat-card-title>
-    Loading supply...
+    Loading...
     <button mat-icon-button (click)="editMode = !editMode" aria-label="Toggle update">
       <mat-icon>update</mat-icon>
       <ng-container> Edit</ng-container>
     </button>
   </mat-card-title>
 </mat-card-header>
+
+<mat-card-header *ngIf="loaded">
+  <mat-card-title>
+    {{supply.machine.name}}
+    <button mat-icon-button (click)="editMode = !editMode" aria-label="Toggle edit">
+      <mat-icon>update</mat-icon>
+      <ng-container *ngIf="!editMode"> Edit</ng-container>
+      <ng-container *ngIf="editMode"> Back</ng-container>
+    </button>
+  </mat-card-title>
+</mat-card-header>
+
 <mat-card-content *ngIf="!loaded">
   <mat-chip-list>
     <mat-chip>
@@ -25,17 +37,6 @@
     </mat-chip>
   </mat-chip-list>
 </mat-card-content>
-
-<mat-card-header *ngIf="loaded">
-  <mat-card-title>
-    {{supply.machine.name}}
-    <button mat-icon-button (click)="editMode = !editMode" aria-label="Toggle edit">
-      <mat-icon>update</mat-icon>
-      <ng-container *ngIf="!editMode"> Edit</ng-container>
-      <ng-container *ngIf="editMode"> Back</ng-container>
-    </button>
-  </mat-card-title>
-</mat-card-header>
 
 <mat-card-content *ngIf="loaded">
   <mat-chip-list multiple aria-label="Supply option" *ngIf="!editMode">
