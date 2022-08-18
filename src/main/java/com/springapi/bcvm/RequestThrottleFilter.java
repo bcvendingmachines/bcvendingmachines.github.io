@@ -2,7 +2,6 @@ package com.springapi.bcvm;
 
 import com.github.benmanes.caffeine.cache.Caffeine;
 import com.github.benmanes.caffeine.cache.LoadingCache;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
@@ -13,7 +12,6 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 @Component
-@ComponentScan
 public class RequestThrottleFilter implements Filter {
 
     private final LoadingCache<String, Integer> requestCountsPerIpAddress;
@@ -47,7 +45,7 @@ public class RequestThrottleFilter implements Filter {
         Integer requests;
         requests = requestCountsPerIpAddress.get(clientIpAddress);
         if(requests != null){
-            int MAX_REQUESTS_PER_SECOND = 1;
+            int MAX_REQUESTS_PER_SECOND = 14;
             if(requests > MAX_REQUESTS_PER_SECOND) {
                 requestCountsPerIpAddress.asMap().remove(clientIpAddress);
                 requestCountsPerIpAddress.put(clientIpAddress, requests);
