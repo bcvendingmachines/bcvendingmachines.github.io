@@ -33,3 +33,4 @@ build/
 .vscode/
 
 Captcha.java
+application.properties
