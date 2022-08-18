@@ -36,7 +36,7 @@ export class SupplyDisplayComponent implements OnInit {
     })
     setTimeout(()=>{
       if (!this.loaded){
-        this.loadingText = "Taking longer than expected..."
+        this.loadingText = "Taking longer than expected... Consider reloading?"
       }
     }, 5000)
   }

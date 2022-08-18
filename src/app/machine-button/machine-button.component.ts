@@ -11,18 +11,19 @@ export class MachineButtonComponent implements OnInit{
   machines$: Observable<Machine[]> | undefined
   loaded = false
   loadingText = "Loading..."
-  constructor(private machineService: MachineService) {
+
+  constructor(private machineService: MachineService) { }
+
+  ngOnInit(): void {
     this.getMachines().then((machines) => {
       if (machines){
         this.loaded = true
         this.machines$ = of(machines)
       }
     })
-  }
-  ngOnInit(): void {
     setTimeout(()=>{
       if (!this.loaded) {
-        this.loadingText = "Taking longer than expected..."
+        this.loadingText = "Taking longer than expected... Consider reloading?"
       }
     }, 5000)
   }
