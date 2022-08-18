@@ -1,16 +1,16 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { Machine } from '../model/machine';
 import { MachineService } from '../service/machine-service.service';
 import {lastValueFrom, Observable, of} from "rxjs";
-
 @Component({
   selector: 'app-machine-button',
   templateUrl: './machine-button.component.html',
   styleUrls: ['./machine-button.component.sass']
 })
-export class MachineButtonComponent {
+export class MachineButtonComponent implements OnInit{
   machines$: Observable<Machine[]> | undefined
   loaded = false
+  loadingText = "Loading..."
   constructor(private machineService: MachineService) {
     this.getMachines().then((machines) => {
       if (machines){
@@ -19,8 +19,16 @@ export class MachineButtonComponent {
       }
     })
   }
-  
+  ngOnInit(): void {
+    setTimeout(()=>{
+      if (!this.loaded) {
+        this.loadingText = "Taking longer than expected..."
+      }
+    }, 5000)
+  }
+
   async getMachines(): Promise<Machine[]> {
     return await lastValueFrom(this.machineService.getMachines())
   }
+
 }

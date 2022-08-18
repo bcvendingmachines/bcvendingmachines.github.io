@@ -1,5 +1,5 @@
 <div *ngIf="!loaded" class="loading">
-  <h3>Loading machines...</h3>
+  <h3>{{loadingText}}</h3>
   <mat-progress-bar mode="indeterminate" color="accent"></mat-progress-bar>
 </div>
 <ng-container *ngIf="loaded">
