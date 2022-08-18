@@ -6,6 +6,7 @@ import { ViewChild } from '@angular/core'
 import {Machine} from "../model/machine"
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {first} from "rxjs";
+import {ReCaptchaV3Service} from "ng-recaptcha";
 
 @Component({
   selector: 'app-supply-display',
@@ -16,13 +17,14 @@ import {first} from "rxjs";
 export class SupplyDisplayComponent implements OnInit {
 
   supply!: Supply
-  newSupply!: Supply
+  newSupply = new Supply()
   loaded = false
   editMode = false
   @Input() machine!: Machine
   @ViewChild(MatAccordion) accordion!: MatAccordion
+  loadingText = "Loading..."
 
-  constructor(private supplyService: SupplyService, private snackBar: MatSnackBar) {
+  constructor(private supplyService: SupplyService, private snackBar: MatSnackBar, private recaptchaV3Service: ReCaptchaV3Service) {
   }
 
   ngOnInit(): void {
@@ -32,6 +34,11 @@ export class SupplyDisplayComponent implements OnInit {
         this.loaded = true
       }
     })
+    setTimeout(()=>{
+      if (!this.loaded){
+        this.loadingText = "Taking longer than expected..."
+      }
+    }, 5000)
   }
 
   logToggle(component: string){
@@ -41,24 +48,36 @@ export class SupplyDisplayComponent implements OnInit {
       this.supply.short_supply = !this.supply.short_supply
     }
   }
+
+  saveSupply(token: string): void {
+    this.supplyService.save(this.newSupply, token).pipe(first()).subscribe({
+      next: () => {
+        this.supply = this.newSupply
+        this.editMode = false
+        this.snackBar.open("Update successful!", "Dismiss", {duration: 3000})
+      }, error: () => {
+        this.snackBar.open("Server error. Please try again", "Reload Page", {duration: 8000})
+          .onAction().pipe(first()).subscribe(()=> location.reload())
+      }
+    })
+  }
+
   submitChanges(checked_by: string, event: SubmitEvent): void {
     event.preventDefault()
-    this.newSupply = new Supply()
     this.newSupply.machine = this.supply.machine
     this.newSupply.time_checked = new Date()
     this.newSupply.checked_by = !checked_by ? "Anon.": checked_by
 
     this.newSupply.coffee = this.supply.coffee
     this.newSupply.short_supply = this.supply.short_supply
-    this.supplyService.save(this.newSupply).pipe(first()).subscribe({
-      next: () => {
-        this.supply = this.newSupply
-        this.editMode = false
-        this.snackBar.open("Update successful!", "Dismiss", {duration: 5000})
-      }, error: () => {
-        this.snackBar.open("Unable to connect to database. Please try again later", "Reload Page", {duration: 8000})
-          .onAction().pipe(first()).subscribe(()=> location.reload())
+    this.recaptchaV3Service.execute('importantAction').pipe(first())
+      .subscribe({
+        next: (token)=>this.saveSupply(token),
+        error: ()=> {
+          this.snackBar.open("Unauthentic request detected", "Reload Page", {duration: 8000})
+            .onAction().pipe(first()).subscribe(()=> location.reload())
+        }
       }
-    })
+    );
   }
 }

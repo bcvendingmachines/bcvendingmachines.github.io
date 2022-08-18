@@ -1,6 +1,6 @@
 <mat-card-header *ngIf="!loaded">
   <mat-card-title>
-    Loading...
+    {{loadingText}}
     <button mat-icon-button (click)="editMode = !editMode" aria-label="Toggle update">
       <mat-icon>update</mat-icon>
       <ng-container> Edit</ng-container>

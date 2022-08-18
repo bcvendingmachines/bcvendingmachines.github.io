@@ -24,6 +24,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
+import { RecaptchaV3Module, RECAPTCHA_V3_SITE_KEY } from "ng-recaptcha";
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
         FlexLayoutModule,
         MatProgressSpinnerModule,
         MatSnackBarModule,
+        RecaptchaV3Module,
         ServiceWorkerModule.register('ngsw-worker.js', {
             enabled: environment.production,
             // Register the ServiceWorker as soon as the application is stable
@@ -61,7 +63,12 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
         }),
         MatProgressBarModule
     ],
-  providers: [],
+  providers: [
+    {
+      provide: RECAPTCHA_V3_SITE_KEY,
+      useValue: environment.recaptcha.siteKey
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
