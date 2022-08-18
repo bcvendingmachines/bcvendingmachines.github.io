@@ -11,7 +11,7 @@ The back end REST API for the BC Vending Machines app. This uses Spring Boot 2.6
 
 ### Spring Boot on port 8080
 
-For development, use `api-develop`. `api-develop` includes "Local configuration" in `api/src/main/resources/application.properties`. For production, it must be commented out. Because of this, a recommendation is to use `git pull --rebase` instead of `git pull`. 
+For development, use `api-develop`. `api-develop` includes "Local configuration" in `api/src/main/resources/application.yaml` and a Captcha class. For production, it must be commented out, and it uses System.getenv("SECRET_KEY") instead of the class.
 
 IntelliJ IDEA was used to create and maintain this API. To run the server, check out the `api-develop` branch in a Java IDE and run it that way. Or, run `mvn spring-boot:run`. This requires some setup via [installing Maven](https://mkyong.com/maven/how-to-install-maven-in-windows/), cd'ing into the directory where pom.xml is located in, and running `mvn spring-boot:run`. [This may help](https://stackoverflow.com/a/56616547). 
 

@@ -41,8 +41,9 @@ public class RouteController {
     Supply save(@RequestBody SupplyToken supplyToken) {
         RestTemplate restTemplate = new RestTemplate();
         ObjectMapper mapper = new ObjectMapper();
+        String secretKey = new Captcha().getSecretKey();
         try {
-            String url = "https://www.google.com/recaptcha/api/siteverify?secret=" + System.getenv("SECRET_KEY")+"&response="+supplyToken.getToken();
+            String url = "https://www.google.com/recaptcha/api/siteverify?secret=" + secretKey +"&response="+supplyToken.getToken();
             HashMap map = mapper.readValue(restTemplate.getForObject(url, String.class), HashMap.class);
             if (map.get("success").equals(true)){
                 return supplyRepository.save(supplyToken.getSupply());
