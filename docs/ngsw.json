@@ -1,0 +1,81 @@
+{
+  "configVersion": 1,
+  "timestamp": 1660850972213,
+  "index": "/bcvm/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/bcvm/favicon.ico",
+        "/bcvm/index.html",
+        "/bcvm/main.f4928710d4bf5bb0.js",
+        "/bcvm/manifest.webmanifest",
+        "/bcvm/polyfills.0c26dcd9373806f1.js",
+        "/bcvm/runtime.3097a8a7d51b658e.js",
+        "/bcvm/styles.1473f5375db338c6.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/bcvm/assets/icons/icon-128x128.png",
+        "/bcvm/assets/icons/icon-144x144.png",
+        "/bcvm/assets/icons/icon-152x152.png",
+        "/bcvm/assets/icons/icon-192x192.png",
+        "/bcvm/assets/icons/icon-384x384.png",
+        "/bcvm/assets/icons/icon-512x512.png",
+        "/bcvm/assets/icons/icon-72x72.png",
+        "/bcvm/assets/icons/icon-96x96.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/bcvm/assets/icons/icon-128x128.png": "86e8d7bf1de6ab302d25710acb26b46969bc0a2b",
+    "/bcvm/assets/icons/icon-144x144.png": "0901292ebf4acbde23b885392420028a0a48d2a0",
+    "/bcvm/assets/icons/icon-152x152.png": "72c2ad5bb28147e6ce57aef6a54cd06e1e34ee66",
+    "/bcvm/assets/icons/icon-192x192.png": "1488a548ad195e84832f127190578e2442cb207a",
+    "/bcvm/assets/icons/icon-384x384.png": "25b7c869e82aaeff62820b1870ec457b1f195649",
+    "/bcvm/assets/icons/icon-512x512.png": "de13aec79fee4b5cf66c16314f3942a4987ab49c",
+    "/bcvm/assets/icons/icon-72x72.png": "fa62e0e5cc87e5c2655daf15ed857e27fed467de",
+    "/bcvm/assets/icons/icon-96x96.png": "cdf55879250ef5fff985c063e8ae67789ee1f616",
+    "/bcvm/favicon.ico": "b43a65544bb15fa0c5dfb9265bc2aeb8300de4ee",
+    "/bcvm/index.html": "a3dfb9e1869dc990d0a78c247ec0c99f3f6fe127",
+    "/bcvm/main.f4928710d4bf5bb0.js": "d49f9868d0acd1ade344852a3358edb1d6abec97",
+    "/bcvm/manifest.webmanifest": "441e9904df0645107ae591aea033f46b05e749f1",
+    "/bcvm/polyfills.0c26dcd9373806f1.js": "7f861b1f7b86ec7a514ce5c1fe3f6123506bd22b",
+    "/bcvm/runtime.3097a8a7d51b658e.js": "c2fb2628afa2fcaa600d89eed8655234a4d6723a",
+    "/bcvm/styles.1473f5375db338c6.css": "dc40c666133229ee6f4fe7c7880c93b6a1cbe40d"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}
