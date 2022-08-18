@@ -39,7 +39,6 @@ public class RouteController {
     @PostMapping("/save")
     @ResponseBody
     Supply save(@RequestBody SupplyToken supplyToken) {
-        Captcha captcha = new Captcha();
         RestTemplate restTemplate = new RestTemplate();
         ObjectMapper mapper = new ObjectMapper();
         try {
