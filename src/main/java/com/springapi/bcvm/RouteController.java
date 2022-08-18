@@ -1,16 +1,24 @@
 package com.springapi.bcvm;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
+
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
 @CrossOrigin
 @RestController
 public class RouteController {
+    private final MachineRepository machineRepository;
+    private final SupplyRepository supplyRepository;
+
     @Autowired
-    private MachineRepository machineRepository;
-    @Autowired
-    private SupplyRepository supplyRepository;
+    public RouteController(MachineRepository machineRepository, SupplyRepository supplyRepository){
+        this.machineRepository = machineRepository;
+        this.supplyRepository = supplyRepository;
+    }
 
     @GetMapping("/machines")
     public List<Machine> getMachines() {
@@ -22,15 +30,23 @@ public class RouteController {
         return supplyRepository.findByMachineId(Integer.valueOf(machineId));
     }
 
-    @PostMapping("/saveMachines")
-    @ResponseBody
-    Machine saveMachines(@RequestBody Machine machine){
-        return machineRepository.save(machine);
-    }
-
     @PostMapping("/save")
     @ResponseBody
-    Supply save(@RequestBody Supply supply){
-        return supplyRepository.save(supply);
+    Supply save(@RequestBody SupplyToken supplyToken) {
+        Captcha captcha = new Captcha();
+        RestTemplate restTemplate = new RestTemplate();
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            String url = captcha.getUrl() + captcha.getSecret_key()+"&response="+supplyToken.getToken();
+            HashMap map = mapper.readValue(restTemplate.getForObject(url, String.class), HashMap.class);
+            if (map.get("success").equals(true)){
+                return supplyRepository.save(supplyToken.getSupply());
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
