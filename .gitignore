@@ -32,5 +32,4 @@ build/
 ### VS Code ###
 .vscode/
 
-Captcha.java
-application.yaml
+src/main/java/com/springapi/bcvm/Captcha.java
