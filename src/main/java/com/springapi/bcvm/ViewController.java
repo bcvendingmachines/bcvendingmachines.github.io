@@ -8,10 +8,14 @@ import java.util.Collections;
 @CrossOrigin(origins = "http://localhost:4200")
 @Controller
 public class ViewController {
+    private final MachineRepository machineRepository;
+    private final SupplyRepository supplyRepository;
+
     @Autowired
-    private MachineRepository machineRepository;
-    @Autowired
-    private SupplyRepository supplyRepository;
+    public ViewController(MachineRepository machineRepository, SupplyRepository supplyRepository){
+        this.machineRepository = machineRepository;
+        this.supplyRepository = supplyRepository;
+    }
 
     @GetMapping("/test")
     String testKeepalive() { return "test";}
