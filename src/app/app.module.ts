@@ -56,7 +56,11 @@ import { RecaptchaV3Module, RECAPTCHA_V3_SITE_KEY } from "ng-recaptcha";
         MatSnackBarModule,
         RecaptchaV3Module,
         ServiceWorkerModule.register('ngsw-worker.js', {
-            enabled: environment.production }),
+            enabled: environment.production,
+            // Register the ServiceWorker as soon as the application is stable
+            // or after 30 seconds (whichever comes first).
+            registrationStrategy: 'registerWhenStable:30000'
+        }),
         MatProgressBarModule
     ],
   providers: [
