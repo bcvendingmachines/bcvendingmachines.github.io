@@ -1,5 +1,10 @@
 DELETE FROM supply WHERE id != 999;
 DELETE FROM machine WHERE id != 999;
+DELETE FROM users WHERE id != 999;
+
+INSERT INTO users(username, password)
+VALUES ('abcd', 'abcd'), ('dfdf', 'dfdf'), ('test', 'test');
+
 INSERT INTO machine("name")
 VALUES ('Woods-Penniman'), ('Draper Floor 2'), ('Draper Floor 3'), ('Alumni'), ('Hutchins'), ('Seabury');
 
@@ -22,11 +27,3 @@ BEGIN;
 LOCK TABLE machine IN EXCLUSIVE MODE;
 SELECT setval('supply_id_seq', COALESCE((SELECT MAX(id)+1 FROM supply), 1), false);
 COMMIT;
-
--- SELECT pg_catalog.setval(pg_get_serial_sequence('supply', 'id'), 8);
--- SELECT pg_catalog.setval(pg_get_serial_sequence('machine', 'id'), 8);
--- SELECT SETVAL(PG_GET_SERIAL_SEQUENCE('supply', 'id')), (SELECT (MAX('id') + 1) FROM 'supply'), FALSE);
--- SELECT SETVAL(PG_GET_SERIAL_SEQUENCE('machine', 'id')), (SELECT (MAX('id') + 1) FROM 'machine'), FALSE);
-
--- DELETE FROM hibernate_sequence WHERE next_val != 999;
--- INSERT INTO hibernate_sequence(next_val) VALUES (9);

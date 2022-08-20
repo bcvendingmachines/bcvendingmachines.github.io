@@ -6,6 +6,14 @@ COMMENT ON SCHEMA public
 GRANT ALL ON SCHEMA public TO PUBLIC;
 GRANT ALL ON SCHEMA public TO postgres;
 
+DROP TABLE IF EXISTS public.users;
+CREATE TABLE IF NOT EXISTS public.users
+(
+    id serial PRIMARY KEY,
+    username character varying(50) COLLATE pg_catalog."default",
+    password character varying(50) COLLATE pg_catalog."default"
+);
+
 DROP TABLE IF EXISTS public.machine;
 CREATE TABLE IF NOT EXISTS public.machine
 (

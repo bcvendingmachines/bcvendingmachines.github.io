@@ -19,11 +19,13 @@ import java.util.Optional;
 public class RouteController {
     private final MachineRepository machineRepository;
     private final SupplyRepository supplyRepository;
+    private final UserRepository userRepository;
 
     @Autowired
-    public RouteController(MachineRepository machineRepository, SupplyRepository supplyRepository){
+    public RouteController(MachineRepository machineRepository, SupplyRepository supplyRepository, UserRepository userRepository){
         this.machineRepository = machineRepository;
         this.supplyRepository = supplyRepository;
+        this.userRepository = userRepository;
     }
 
     @GetMapping("/machines")
@@ -54,5 +56,11 @@ public class RouteController {
             e.printStackTrace();
             return null;
         }
+    }
+    @GetMapping("/login/{user}")
+    public Optional<User> logIn(@PathVariable String user) {
+        System.out.println(user);
+        return Optional.empty();
+//        return userRepository.findUserByUsernameAndPassword(user);
     }
 }
