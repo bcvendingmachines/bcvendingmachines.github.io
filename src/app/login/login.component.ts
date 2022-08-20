@@ -14,7 +14,7 @@ export class LoginComponent {
   errorMessage = "Please complete all forms"
   @Output() loggedIn = new EventEmitter<User>()
 
-  constructor(public dialogRef: MatDialog, private userService: UserService) {
+  constructor(public dialog: MatDialog, private userService: UserService) {
   }
 
   login(event: SubmitEvent, username: string, password: string) {
@@ -25,7 +25,7 @@ export class LoginComponent {
     } else {
       this.userService.logIn(username, password).pipe(first()).subscribe({
         next: (user)=>{
-          this.dialogRef.open(LoginComponent)
+          this.dialog.closeAll()
           this.loggedIn.emit(user)
         }, error: ()=>{
           this.error = true
