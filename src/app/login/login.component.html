@@ -1,8 +1,24 @@
-<h1 mat-dialog-title>Log in</h1>
-<div mat-dialog-content>
-  Would you like to delete cat.jpeg?
-</div>
-<div mat-dialog-actions>
-  <button mat-button mat-dialog-close="true">No</button>
-  <button mat-button>Ok</button>
-</div>
+<h2 mat-dialog-title>Log in
+  <button mat-button class="mat-small">Create an Account</button>
+</h2>
+<form (submit)="login($event, username.value, password.value)">
+  <div mat-dialog-content>
+      <p>
+        <mat-form-field>
+          <input type="text" matInput #username placeholder="Username">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input type="password" matInput #password placeholder="Password">
+        </mat-form-field>
+      </p>
+      <p *ngIf="error" class="mat-small mat-error">
+        {{ errorMessage }}
+      </p>
+  </div>
+  <div mat-dialog-actions>
+    <button type="submit" mat-button >Log in</button>
+    <button mat-button mat-dialog-close="true">Close</button>
+  </div>
+</form>

@@ -9,13 +9,11 @@
       </button>
     </span>
     <span>
-      <button mat-button class="button">{{loginTitle}}<button
-        mat-icon-button
-        (click)="openLogin()"
-        aria-label="Log in">
-        <mat-icon>account_circle</mat-icon>
-      </button></button>
-
+      <button mat-button class="button" (click)="openLogin()"
+              aria-label="Log in"><span style="padding-right: 0.3rem">
+        {{loginTitle}}
+      </span>
+        <mat-icon>account_circle</mat-icon></button>
     </span>
   </mat-toolbar></p>
   <app-machine-button
@@ -31,3 +29,4 @@
 </footer>
 </div>
 <router-outlet></router-outlet>
+<app-login hidden (loggedIn)="logIn($event)"></app-login>
