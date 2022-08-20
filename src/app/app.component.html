@@ -1,12 +1,22 @@
 <div class="background mat-typography app-frame basic-container">
-  <p><mat-toolbar color="primary">
-    <span>BCVM</span>
-    <button
+  <p><mat-toolbar style="justify-content: space-between" color="primary">
+    <span>BCVM
+      <button
       mat-icon-button
       onclick="location.reload()"
       aria-label="Toggle refresh">
       <mat-icon>refresh</mat-icon>
-    </button>
+      </button>
+    </span>
+    <span>
+      <button mat-button class="button">{{loginTitle}}<button
+        mat-icon-button
+        (click)="openLogin()"
+        aria-label="Log in">
+        <mat-icon>account_circle</mat-icon>
+      </button></button>
+
+    </span>
   </mat-toolbar></p>
   <app-machine-button
     fxLayout="row wrap"

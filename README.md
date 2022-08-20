@@ -53,5 +53,4 @@ Don't run this in Bash because Bash mistreats base-href (it's a known issue). If
 
 ## Dev Checklist 
 
-- Security measures
 - Log in functionality

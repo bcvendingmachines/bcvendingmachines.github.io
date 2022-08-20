@@ -25,12 +25,15 @@ import { environment } from '../environments/environment';
 import { MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import { RecaptchaV3Module, RECAPTCHA_V3_SITE_KEY } from "ng-recaptcha";
+import { LoginComponent } from './login/login.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
     AppComponent,
     MachineButtonComponent,
     SupplyDisplayComponent,
+    LoginComponent,
     /*routingComponents,*/
   ],
     imports: [
@@ -61,7 +64,8 @@ import { RecaptchaV3Module, RECAPTCHA_V3_SITE_KEY } from "ng-recaptcha";
             // or after 30 seconds (whichever comes first).
             registrationStrategy: 'registerWhenStable:30000'
         }),
-        MatProgressBarModule
+        MatProgressBarModule,
+        MatDialogModule
     ],
   providers: [
     {

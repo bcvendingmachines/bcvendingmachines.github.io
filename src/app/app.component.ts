@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'
+import {MatDialog} from "@angular/material/dialog"
+import {LoginComponent} from "./login/login.component"
 
 @Component({
   selector: 'app-root',
@@ -7,6 +9,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   fullYear = new Date().getFullYear()
-  constructor(){
-  };
+  loginTitle = "Login"
+  constructor(public dialog: MatDialog){
+  }
+  openLogin(): void {
+    this.dialog.open(LoginComponent)
+  }
 }
