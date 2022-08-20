@@ -47,19 +47,9 @@ For the back end, [go to this API README](https://github.com/zachneill/bcvm/tree
 
 This is for the front end. [Make sure your system variables PATH has Git](https://stackoverflow.com/a/4493004/18721369). Otherwise, you may get an __Error: spawn git ENOENT__ error.
 
-In _PowerShell_, _Command Prompt_, or a non-Bash terminal, run `npm run deploy` to deploy it to [zachneill.github.io/bcvm](https://zachneill.github.io/bcvm). 
+In _PowerShell_, _Command Prompt_, or a non-Bash terminal, run `ng deploy` to deploy it to [zachneill.github.io/bcvm](https://zachneill.github.io/bcvm). 
 
 Don't run this in Bash because Bash mistreats base-href (it's a known issue). If publishing using Bash, you may get __Not allowed to load local resource__ when viewing the [GH Page](https://zachneill.github.io/bcvm). If using Powershell, you may have to run `Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass` first. Otherwise, you will get an error. 
-
-### Android (WORK IN PROGRESS)
-
-Make sure the [Capacitor](https://capacitorjs.com/docs/getting-started) requirements (core, cli, and android) are installed.
-
-If you recreate the capacitor-config.ts file with npx cap init, make sure `webDir:` is `'dist/bcvm'`.
-
-Run `ng build`, then `npx cap add android`.
-
-`npx cap open android` opens the project in Android Studio. Follow [these steps](https://capacitorjs.com/docs/getting-started/environment-setup#android-development) to ensure ideal configuration.
 
 ## Dev Checklist 
 

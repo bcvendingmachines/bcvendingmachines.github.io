@@ -1,6 +1,0 @@
-{
-	"appId": "com.znsus.bcvm",
-	"appName": "bcvm",
-	"webDir": "dist/bcvm",
-	"bundledWebRuntime": false
-}
