@@ -17,13 +17,29 @@ export class LoginComponent {
   constructor(public dialog: MatDialog, private userService: UserService) {
   }
 
-  login(event: SubmitEvent, username: string, password: string) {
-    event.preventDefault()
+  login(username: string, password: string) {
     if (!username || !password){
       this.error = true
       this.errorMessage = "Please complete all fields"
     } else {
       this.userService.logIn(username, password).pipe(first()).subscribe({
+        next: (user: User)=>{
+          this.loggedIn.emit(user)
+          this.dialog.closeAll()
+        }, error: ()=>{
+          this.error = true
+          this.errorMessage = "Server error logging in... Refresh?"
+        }
+      })
+    }
+  }
+
+  createAccount(username: string, password: string) {
+    if (!username || !password){
+      this.error = true
+      this.errorMessage = "Please complete all fields"
+    } else {
+      this.userService.createAccount(username, password).pipe(first()).subscribe({
         next: (user)=>{
           this.dialog.closeAll()
           this.loggedIn.emit(user)
