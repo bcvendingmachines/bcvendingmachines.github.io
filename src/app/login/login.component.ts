@@ -14,6 +14,7 @@ export class LoginComponent {
   error = false
   errorMessage = "Please complete all forms"
   username: string | undefined = "Login"
+  loggedIn: boolean = false
 
   constructor(private userService: UserService, private router: Router, private appComponent: AppComponent) {
   }
@@ -26,6 +27,7 @@ export class LoginComponent {
       this.userService.logIn(username, password).pipe(first()).subscribe({
         next: ()=>{
           this.router.navigate(['/']).then(()=>{
+            this.loggedIn = true
             this.appComponent.displayUser()
           });
         }, error: ()=>{

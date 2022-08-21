@@ -11,7 +11,6 @@ import {take} from "rxjs";
 export class AppComponent {
   fullYear = new Date().getFullYear()
   loginTitle: string | undefined = "Login"
-
   constructor(private userRepository: UserRepository) {
   }
 
