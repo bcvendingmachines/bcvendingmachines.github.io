@@ -57,10 +57,12 @@ public class RouteController {
             return null;
         }
     }
-    @GetMapping("/login/{user}")
-    public Optional<User> logIn(@PathVariable String user) {
+    @PostMapping("/login")
+    @ResponseBody
+    public Optional<User> logIn(@RequestBody User user) {
         System.out.println(user);
-        return Optional.empty();
-//        return userRepository.findUserByUsernameAndPassword(user);
+        System.out.println(userRepository.findUserByUsernameAndPassword(user.getUsername(), user.getPassword()));
+        return userRepository.findUserByUsernameAndPassword(user.getUsername(), user.getPassword());
+
     }
 }
