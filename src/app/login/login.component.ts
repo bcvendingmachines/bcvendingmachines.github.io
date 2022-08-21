@@ -1,20 +1,21 @@
-import {Component, EventEmitter, Output} from '@angular/core';
-import {MatDialog} from "@angular/material/dialog";
+import {Component} from '@angular/core';
 import {UserService} from "../service/user.service";
 import {first} from "rxjs";
-import {User} from "../model/user";
+import {Router} from "@angular/router";
+import {AppComponent} from "../app.component";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.sass']
 })
+
 export class LoginComponent {
   error = false
   errorMessage = "Please complete all forms"
-  @Output() loggedIn = new EventEmitter<User>()
+  username: string | undefined = "Login"
 
-  constructor(public dialog: MatDialog, private userService: UserService) {
+  constructor(private userService: UserService, private router: Router, private appComponent: AppComponent) {
   }
 
   login(username: string, password: string) {
@@ -23,9 +24,10 @@ export class LoginComponent {
       this.errorMessage = "Please complete all fields"
     } else {
       this.userService.logIn(username, password).pipe(first()).subscribe({
-        next: (user: User)=>{
-          this.loggedIn.emit(user)
-          this.dialog.closeAll()
+        next: ()=>{
+          this.router.navigate(['/']).then(()=>{
+            this.appComponent.displayUser()
+          });
         }, error: ()=>{
           this.error = true
           this.errorMessage = "Server error logging in... Refresh?"
@@ -40,9 +42,8 @@ export class LoginComponent {
       this.errorMessage = "Please complete all fields"
     } else {
       this.userService.createAccount(username, password).pipe(first()).subscribe({
-        next: (user)=>{
-          this.dialog.closeAll()
-          this.loggedIn.emit(user)
+        next: ()=>{
+          this.router.navigate(['/']).then();
         }, error: ()=>{
           this.error = true
           this.errorMessage = "Server error logging in... Refresh?"

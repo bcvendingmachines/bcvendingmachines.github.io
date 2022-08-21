@@ -2,7 +2,7 @@ import { NgModule} from "@angular/core";
 import { BrowserModule } from '@angular/platform-browser';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
-import { AppRoutingModule /*, routingComponents*/ } from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { HttpClientModule } from '@angular/common/http';
@@ -27,6 +27,7 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
 import { RecaptchaV3Module, RECAPTCHA_V3_SITE_KEY } from "ng-recaptcha";
 import { LoginComponent } from './login/login.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import {MatDialogModule} from "@angular/material/dialog";
     MachineButtonComponent,
     SupplyDisplayComponent,
     LoginComponent,
-    /*routingComponents,*/
+    MainComponent,
   ],
     imports: [
         BrowserModule,

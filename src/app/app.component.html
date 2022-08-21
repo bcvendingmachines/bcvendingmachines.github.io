@@ -2,31 +2,26 @@
   <p><mat-toolbar style="justify-content: space-between" color="primary">
     <span>BCVM
       <button
-      mat-icon-button
-      onclick="location.reload()"
-      aria-label="Toggle refresh">
+        mat-icon-button
+        onclick="location.reload()"
+        aria-label="Toggle refresh">
       <mat-icon>refresh</mat-icon>
       </button>
     </span>
     <span>
-      <button mat-button class="button" (click)="openLogin()"
+      <button mat-button class="button" routerLink="/login"
               aria-label="Log in"><span style="padding-right: 0.3rem">
         {{loginTitle}}
       </span>
         <mat-icon>account_circle</mat-icon></button>
     </span>
   </mat-toolbar></p>
-  <app-machine-button
-    fxLayout="row wrap"
-    fxLayoutGap="2px"
-    fxLayoutAlign="start"
-    style="margin-left: 10px">
-  </app-machine-button>
-<footer>
-  <p class="footer">
-    © {{fullYear}} Zach Neill | This site is protected by reCAPTCHA
-  </p>
-</footer>
+
+  <router-outlet></router-outlet>
+
+  <footer>
+    <p class="footer">
+      © {{fullYear}} Zach Neill | This site is protected by reCAPTCHA
+    </p>
+  </footer>
 </div>
-<app-login hidden></app-login>
-<router-outlet></router-outlet>

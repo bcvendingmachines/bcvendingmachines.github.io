@@ -1,25 +1,21 @@
-import {Component, OnInit} from '@angular/core'
-import {MatDialog} from "@angular/material/dialog"
-import {LoginComponent} from "./login/login.component"
+import {Component, Injectable} from '@angular/core'
 import {UserRepository} from "./state/user.repository";
 import {take} from "rxjs";
-import {UserService} from "./service/user.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.sass']
 })
-export class AppComponent implements OnInit{
+@Injectable({ providedIn: 'root' })
+export class AppComponent {
   fullYear = new Date().getFullYear()
   loginTitle: string | undefined = "Login"
-  error = false
-  errorMessage = "Please complete all forms"
 
-  constructor(public dialog: MatDialog, private userRepository: UserRepository){
+  constructor(private userRepository: UserRepository) {
   }
 
-  ngOnInit(): void {
+  displayUser(): void {
     this.userRepository.currentUser.pipe(take(1)).subscribe((user)=>{
       if (user){
         this.loginTitle = user?.username
@@ -27,7 +23,4 @@ export class AppComponent implements OnInit{
     })
   }
 
-  openLogin(): void {
-    this.dialog.open(LoginComponent)
-  }
 }
