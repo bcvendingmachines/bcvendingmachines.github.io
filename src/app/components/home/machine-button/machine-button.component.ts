@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import { Machine } from '../model/machine';
-import { MachineService } from '../service/machine-service.service';
+import { Machine } from '../../../model/machine';
+import { MachineService } from '../../../service/machine-service.service';
 import {lastValueFrom, Observable, of} from "rxjs";
 @Component({
   selector: 'app-machine-button',

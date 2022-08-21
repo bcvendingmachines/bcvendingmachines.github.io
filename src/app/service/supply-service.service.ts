@@ -3,7 +3,7 @@ import { HttpClient } from "@angular/common/http"
 import { Observable } from 'rxjs'
 import { Supply } from '../model/supply'
 import {Configs} from "./configs";
-import {SupplyToken} from "../model/supplyToken";
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,10 +13,10 @@ export class SupplyService {
 
   public getSupply(id:number) : Observable<Supply> { return this.http.get<Supply>(Configs.supplyUrl + id) }
 
-  public save(supply: Supply, token: string): Observable<Supply> {
-    let supplyToken: SupplyToken = {
-      token: token,
-      supply: supply
+  public save(supplyData: Supply, token: string): Observable<Supply> {
+    let supply: Supply = {
+      ...supplyData,
+      token: token
     }
-    return this.http.post<Supply>(Configs.saveUrl, supplyToken) }
+    return this.http.post<Supply>(Configs.saveUrl, supply) }
 }

@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core'
-import { Supply } from '../model/supply'
-import { SupplyService } from '../service/supply-service.service'
+import { Supply } from '../../../model/supply'
+import { SupplyService } from '../../../service/supply-service.service'
 import { MatAccordion } from '@angular/material/expansion'
 import { ViewChild } from '@angular/core'
-import {Machine} from "../model/machine"
+import {Machine} from "../../../model/machine"
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {first} from "rxjs";
 import {ReCaptchaV3Service} from "ng-recaptcha";

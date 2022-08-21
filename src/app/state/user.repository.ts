@@ -15,6 +15,8 @@ export interface User {
   id: PropertyKey | number
   username: string | undefined
   password: string | undefined
+  contributions?: number | undefined
+  display_name: string | undefined
 }
 
 @Injectable({ providedIn: 'root' })
