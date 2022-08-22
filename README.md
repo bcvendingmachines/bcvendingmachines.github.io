@@ -9,14 +9,17 @@ An application that describes whether a vending machine on campus is on short su
 
 ## Technologies
 
-This application uses Angular 14. The `master` branch (and `develop` branch for development) is the front end seen on [GH Pages](https://zachneill.github.io/bcvm). The back end uses Spring Boot with Java 8. It is in the `api` branch (`api-develop` for development), and each commit auto-deploys to [Heroku](https://bcvm.herokuapp.com). The API can be run locally ([documentation here](https://github.com/zachneill/bcvm/tree/api#bcvm-back-end-api)).
+This application uses Angular 14. The `master` branch (and `develop` branch for development) is the front end seen 
+on [Heroku](https://bcvm.herokuapp.com). The back end uses Spring Boot with Java 8. It is in the `api` branch (`api-develop` for development), 
+and each commit auto-deploys to [Heroku](https://bcvm.herokuapp.com). The API can be run locally 
+([documentation here](https://github.com/zachneill/bcvm/tree/api#bcvm-back-end-api)).
 
 ### To run the application locally, required technologies are:
 
 #### _Full development stack_ **
 
-- [Angular/Angular CLI](https://angular.io/guide/setup-local#install-the-angular-cli) on port 4200
-- Spring Boot on port 8080 *
+- [Angular/Angular CLI](https://angular.io/guide/setup-local#install-the-angular-cli) on port 4200 (`develop` branch)
+- Spring Boot on port 8080 (`api-develop` branch)*
 - [PostgreSQL](https://www.postgresql.org/download/) on port 5432 *
 
 \* [Click here](https://github.com/zachneill/bcvm/tree/api#bcvm-back-end-api) for back end setup documentation
@@ -30,10 +33,10 @@ This application uses Angular 14. The `master` branch (and `develop` branch for 
 
 #### _API only_ *
 
-- Spring Boot on port 8080
+- Spring Boot on port 8080 (`api-develop` branch)
 - [PostgreSQL](https://www.postgresql.org/download/) on port 5432
 
-## Scripts
+## Scripts/Protocol
 
 ### Development server
 
@@ -43,13 +46,13 @@ For the front end, run `ng serve` for a dev server. Navigate to the server at `h
 
 For the back end, [go to this API README](https://github.com/zachneill/bcvm/tree/api#bcvm-back-end-api). The server is `http://localhost:8080/`.
 
-### GH Pages
+### Heroku
 
-This is for the front end. [Make sure your system variables PATH has Git](https://stackoverflow.com/a/4493004/18721369). Otherwise, you may get an __Error: spawn git ENOENT__ error.
+The production build is on Heroku at [bcvm.herokuapp.com](https://bcvm.herokuapp.com). It auto-deploys the `api` branch. To deploy the front end, 
+run `ng build`, which creates a `static` folder in the root directory. Copy and paste that into the `api` branch in `api/src/main/resources`.
+Remove the static folder that's already there. Commit and push, and Heroku will deploy it on its own. To deploy the back end, just commit and push to the `api` branch as you normally would.
 
-In _PowerShell_, _Command Prompt_, or a non-Bash terminal, run `ng deploy` to deploy it to [zachneill.github.io/bcvm](https://zachneill.github.io/bcvm). 
-
-Don't run this in Bash because Bash mistreats base-href (it's a known issue). If publishing using Bash, you may get __Not allowed to load local resource__ when viewing the [GH Page](https://zachneill.github.io/bcvm). If using Powershell, you may have to run `Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass` first. Otherwise, you will get an error. 
+For development, use the `api-develop` and `develop` branches. 
 
 ## Dev Checklist 
 
