@@ -1,5 +1,6 @@
-package com.springapi.bcvm;
+package com.springapi.bcvm.model;
 
+import com.sun.istack.NotNull;
 import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
@@ -15,12 +16,17 @@ public class Supply {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name="machine", nullable=false)
+    @JoinColumn(name="machine")
     private Machine machine;
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    @NotNull
+    private User user_id;
     private Date time_checked;
     private boolean coffee;
     private boolean short_supply;
     private String checked_by;
+    private String token;
 
     public Supply() {
     }
@@ -40,6 +46,10 @@ public class Supply {
     public void setMachine(Machine machine) {
         this.machine = machine;
     }
+
+    public User getUser_id() { return user_id; }
+
+    public void setUser_id(User user_id) { this.user_id = user_id; }
 
     public Date getTime_checked() {
         return time_checked;
@@ -73,4 +83,7 @@ public class Supply {
         this.checked_by = checked_by;
     }
 
+    public String getToken() { return token; }
+
+    public void setToken(String token) { this.token = token; }
 }

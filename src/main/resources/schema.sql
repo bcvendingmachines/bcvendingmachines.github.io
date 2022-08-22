@@ -6,6 +6,17 @@ COMMENT ON SCHEMA public
 GRANT ALL ON SCHEMA public TO PUBLIC;
 GRANT ALL ON SCHEMA public TO postgres;
 
+DROP TABLE IF EXISTS public.users;
+CREATE TABLE IF NOT EXISTS public.users
+(
+    id serial PRIMARY KEY,
+    username character varying(50) COLLATE pg_catalog."default",
+    password character varying(50) COLLATE pg_catalog."default",
+    token character varying(50) COLLATE pg_catalog."default",
+    contributions integer,
+    display_name character varying(50) COLLATE pg_catalog."default"
+);
+
 DROP TABLE IF EXISTS public.machine;
 CREATE TABLE IF NOT EXISTS public.machine
 (
@@ -25,8 +36,14 @@ CREATE TABLE IF NOT EXISTS public.supply
     short_supply boolean NOT NULL,
     time_checked date,
     checked_by character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    token character varying(50) COLLATE pg_catalog."default",
+    user_id integer NOT NULL,
     CONSTRAINT machine FOREIGN KEY (machine)
         REFERENCES public.machine (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT users FOREIGN KEY (user_id)
+        REFERENCES public.users (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
 )

@@ -1,4 +1,4 @@
-package com.springapi.bcvm;
+package com.springapi.bcvm.util;
 
 import com.github.benmanes.caffeine.cache.Caffeine;
 import com.github.benmanes.caffeine.cache.LoadingCache;
