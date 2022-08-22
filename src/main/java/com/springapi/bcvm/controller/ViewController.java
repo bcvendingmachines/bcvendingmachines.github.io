@@ -22,7 +22,7 @@ public class ViewController {
     @GetMapping("/test")
     String testKeepalive() { return "test";}
 
-    @GetMapping("/")
+    @GetMapping("/home")
     String testIndex() { return "index";}
 
     @GetMapping("/test/machine")
