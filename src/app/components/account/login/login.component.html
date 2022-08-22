@@ -1,0 +1,29 @@
+  <mat-card style="margin: auto; text-align: center">
+    <mat-card-title >Log in </mat-card-title>
+    <mat-card-subtitle> <button mat-button class="mat-small" (click)="creatingAccount = true">Create an Account</button>
+    </mat-card-subtitle>
+
+    <p>
+      <mat-form-field>
+        <input type="text" matInput #username placeholder="Username">
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field>
+        <input type="password" matInput #password placeholder="Password">
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field *ngIf="creatingAccount">
+        <input type="password" #retypePassword matInput placeholder="Retype Password">
+      </mat-form-field>
+    </p>
+    <mat-card-actions>
+      <button *ngIf="creatingAccount" mat-button (click)="createAccount(username.value, password.value)">Sign up</button>
+      <button *ngIf="!creatingAccount" mat-button (click)="login(username.value, password.value)">Log in</button>
+      <button mat-button routerLink="/">Back</button>
+    </mat-card-actions>
+    <p *ngIf="hasError" class="mat-small mat-error">
+      {{ errorMessage }}
+    </p>
+  </mat-card>

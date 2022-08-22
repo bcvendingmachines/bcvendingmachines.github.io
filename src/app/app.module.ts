@@ -1,13 +1,13 @@
-import { NgModule } from '@angular/core';
+import { NgModule} from "@angular/core";
 import { BrowserModule } from '@angular/platform-browser';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
-import { AppRoutingModule /*, routingComponents*/ } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './components/app.component';
+import { BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { HttpClientModule } from '@angular/common/http';
-import { MachineButtonComponent } from './machine-button/machine-button.component';
-import { SupplyDisplayComponent } from './supply-display/supply-display.component';
+import { MachineButtonComponent } from './components/home/machine-button/machine-button.component';
+import { SupplyDisplayComponent } from './components/home/supply-display/supply-display.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
@@ -25,13 +25,19 @@ import { environment } from '../environments/environment';
 import { MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import { RecaptchaV3Module, RECAPTCHA_V3_SITE_KEY } from "ng-recaptcha";
+import { LoginComponent } from './components/account/login/login.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import { MainComponent } from './components/home/main/main.component';
+import { SettingsComponent } from './components/account/settings/settings.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MachineButtonComponent,
     SupplyDisplayComponent,
-    /*routingComponents,*/
+    LoginComponent,
+    MainComponent,
+    SettingsComponent,
   ],
     imports: [
         BrowserModule,
@@ -56,8 +62,13 @@ import { RecaptchaV3Module, RECAPTCHA_V3_SITE_KEY } from "ng-recaptcha";
         MatSnackBarModule,
         RecaptchaV3Module,
         ServiceWorkerModule.register('ngsw-worker.js', {
-            enabled: environment.production }),
-        MatProgressBarModule
+            enabled: environment.production,
+            // Register the ServiceWorker as soon as the application is stable
+            // or after 30 seconds (whichever comes first).
+            registrationStrategy: 'registerWhenStable:30000'
+        }),
+        MatProgressBarModule,
+        MatDialogModule
     ],
   providers: [
     {

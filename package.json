@@ -1,6 +1,6 @@
 {
   "name": "bcvm",
-  "version": "0.9.5",
+  "version": "0.9.8",
   "description": "BC vending machines on short supply",
   "scripts": {
     "ng": "ng",
@@ -8,7 +8,6 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy": "ng deploy --base-href=/bcvm/",
     "lint": "ng lint"
   },
   "private": true,
@@ -25,8 +24,10 @@
     "@angular/platform-browser-dynamic": "^14.1.2",
     "@angular/router": "^14.1.2",
     "@angular/service-worker": "^14.1.2",
-    "@capacitor/android": "^4.0.1",
-    "@capacitor/core": "^4.0.1",
+    "@ngneat/elf": "^2.1.0",
+    "@ngneat/elf-cli-ng": "^1.0.0",
+    "@ngneat/elf-entities": "^4.4.1",
+    "@ngneat/elf-requests": "^1.1.4",
     "ng-recaptcha": "^10.0.0",
     "rxjs": "^7.5.6",
     "rxjs-compat": "^6.6.7",
@@ -42,11 +43,10 @@
     "@angular-eslint/template-parser": "14.0.2",
     "@angular/cli": "^14.1.2",
     "@angular/compiler-cli": "^14.1.2",
-    "@capacitor/cli": "^3.7.0",
     "@types/jasmine": "^4.0.3",
     "@types/node": "^18.7.5",
-    "@typescript-eslint/eslint-plugin": "~5.29.0",
-    "@typescript-eslint/parser": "~5.29.0",
+    "@typescript-eslint/eslint-plugin": "5.29.0",
+    "@typescript-eslint/parser": "5.29.0",
     "angular-cli-ghpages": "^1.0.3",
     "eslint": "^8.18.0",
     "jasmine-core": "^4.3.0",
@@ -56,5 +56,14 @@
     "karma-jasmine": "^5.1.0",
     "karma-jasmine-html-reporter": "^2.0.0",
     "typescript": "^4.7.4"
+  },
+  "elf": {
+    "cli": {
+      "repoTemplate": "class",
+      "inlineStoreInClass": true,
+      "idKey": "id",
+      "repoLibrary": "state",
+      "plugins": []
+    }
   }
 }

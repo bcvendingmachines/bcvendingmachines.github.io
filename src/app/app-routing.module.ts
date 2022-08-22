@@ -1,7 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import {LoginComponent} from "./components/account/login/login.component";
+import {MainComponent} from "./components/home/main/main.component";
+import {SettingsComponent} from "./components/account/settings/settings.component";
+
 const routes: Routes = [
-  // { path: 'test', component: DbTesterComponent }
+  { path: '', component: MainComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'account/:username', component: SettingsComponent}
 ];
 
 @NgModule({
@@ -9,5 +15,3 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-
-// export const routingComponents = [];
