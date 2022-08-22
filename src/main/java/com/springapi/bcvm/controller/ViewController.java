@@ -1,4 +1,6 @@
-package com.springapi.bcvm;
+package com.springapi.bcvm.controller;
+import com.springapi.bcvm.repository.SupplyRepository;
+import com.springapi.bcvm.repository.MachineRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

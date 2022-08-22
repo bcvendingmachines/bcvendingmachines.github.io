@@ -1,4 +1,4 @@
-package com.springapi.bcvm;
+package com.springapi.bcvm.model;
 
 import org.springframework.data.annotation.Id;
 

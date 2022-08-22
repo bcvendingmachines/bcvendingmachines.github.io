@@ -1,5 +1,12 @@
-package com.springapi.bcvm;
+package com.springapi.bcvm.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.springapi.bcvm.util.Captcha;
+import com.springapi.bcvm.model.Machine;
+import com.springapi.bcvm.model.Supply;
+import com.springapi.bcvm.model.User;
+import com.springapi.bcvm.repository.MachineRepository;
+import com.springapi.bcvm.repository.SupplyRepository;
+import com.springapi.bcvm.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,8 +20,6 @@ import org.springframework.web.client.RestTemplate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
-
-import static java.util.Objects.isNull;
 
 @CrossOrigin
 @RestController

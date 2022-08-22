@@ -1,5 +1,6 @@
-package com.springapi.bcvm;
+package com.springapi.bcvm.repository;
 
+import com.springapi.bcvm.model.User;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;

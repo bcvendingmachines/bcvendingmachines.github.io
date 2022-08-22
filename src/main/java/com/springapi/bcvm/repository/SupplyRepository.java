@@ -1,5 +1,6 @@
-package com.springapi.bcvm;
+package com.springapi.bcvm.repository;
 
+import com.springapi.bcvm.model.Supply;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
