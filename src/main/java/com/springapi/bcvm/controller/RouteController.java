@@ -1,6 +1,5 @@
 package com.springapi.bcvm.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.springapi.bcvm.util.Captcha;
 import com.springapi.bcvm.model.Machine;
 import com.springapi.bcvm.model.Supply;
 import com.springapi.bcvm.model.User;
@@ -116,8 +115,7 @@ public class RouteController {
     }
 
     boolean passesCaptcha(String token) {
-        String secretKey = new Captcha().getSecretKey();
-        String url = "https://www.google.com/recaptcha/api/siteverify?secret="+secretKey+"&response="+token;
+        String url = "https://www.google.com/recaptcha/api/siteverify?secret="+System.getenv("SECRET_KEY")+"&response="+token;
         ObjectMapper mapper = new ObjectMapper();
         RestTemplate restTemplate = new RestTemplate();
         try {
