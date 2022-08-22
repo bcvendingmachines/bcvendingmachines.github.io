@@ -1,3 +1,6 @@
+import {User} from "../model/user";
+import {Injectable} from "@angular/core";
+
 // Comment out the config you don't need
 
 // PRODUCTION / HTTPS
@@ -12,8 +15,6 @@
 // }
 
 // LOCAL / HTTP
-import {User} from "../model/user";
-import {Injectable} from "@angular/core";
 
 export enum Configs {
   saveUrl = 'http://localhost:8080/save',
@@ -22,11 +23,23 @@ export enum Configs {
   loginUrl = 'http://localhost:8080/login',
   createAccountUrl = 'http://localhost:8080/create',
   userUrl = 'http://localhost:8080/user/',
-  updateUserUrl = 'http://localhost:8080/updateUser'
+  updateUserUrl = 'http://localhost:8080/updateUser',
 }
 
 @Injectable({providedIn: "root"})
 export class Global {
   public currentUser: User = new User()
   public loggedIn: boolean = false
+  public success: any = {
+    saveSuccessful: "Save successful!",
+    updateSuccessful: "Update successful!",
+    accountCreated: "Account created!"
+  }
+  public error: any = {
+    serverError: "Server error logging in... Refresh?",
+    unauthenticRequest: "Unauthentic request detected",
+    userAlreadyExists: "Username already exists",
+    incompleteFields: "Please complete all fields",
+    passwordMismatch: "Passwords do not match"
+  }
 }

@@ -19,7 +19,7 @@ export class SettingsComponent implements OnInit {
   editable: boolean = false
   hasError: boolean = false
   public username: string | null | undefined
-  errorMessage: string = "Please complete all forms"
+  errorMessage: string = this.global.error.incompleteFields
 
   constructor(private userService: UserService, private userRepository: UserRepository, private router: Router,
               private activatedRoute: ActivatedRoute, public global: Global, private recaptchaV3Service: ReCaptchaV3Service,
@@ -53,12 +53,12 @@ export class SettingsComponent implements OnInit {
         this.userService.updateUser({...this.global.currentUser, token: token}).pipe(first()).subscribe(()=>{
           this.userRepository.updateUser(this.global.currentUser.id, this.global.currentUser)
           this.appComponent.displayUser()
-          this.snackBar.open("Save successful!", "Dismiss", {duration: 5000})
+          this.snackBar.open(this.global.success.saveSuccessful, "Dismiss", {duration: 5000})
             .onAction().pipe(first()).subscribe(()=> this.snackBar.dismiss())
         })
       }, error: ()=>{
         this.hasError = true
-        this.snackBar.open("Unauthentic request detected", "Reload Page", {duration: 8000})
+        this.snackBar.open(this.global.error.unauthenticRequest, "Reload Page", {duration: 8000})
           .onAction().pipe(first()).subscribe(()=> location.reload())
       }
     })

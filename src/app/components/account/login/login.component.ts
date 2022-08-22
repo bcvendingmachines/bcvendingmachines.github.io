@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import {AppComponent} from "../../app.component";
 import {ReCaptchaV3Service} from "ng-recaptcha";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {Global} from "../../../service/configs";
 
 @Component({
   selector: 'app-login',
@@ -15,18 +16,18 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 export class LoginComponent {
   hasError: boolean = false
   creatingAccount: boolean = false
-  errorMessage: string = "Please complete all forms"
+  errorMessage: string = this.global.error.incompleteFields
   username: string | undefined = "Login"
   @ViewChild('retypePassword') retypePassword: ElementRef | undefined;
 
   constructor(private userService: UserService, private router: Router, private appComponent: AppComponent,
-              private recaptchaV3Service: ReCaptchaV3Service, private snackBar: MatSnackBar) {
+              private recaptchaV3Service: ReCaptchaV3Service, private snackBar: MatSnackBar, public global: Global) {
   }
 
   login(username: string, password: string) {
     if (!username || !password){
       this.hasError = true
-      this.errorMessage = "Please complete all fields"
+      this.errorMessage = this.global.error.incompleteFields
     } else {
       this.recaptchaV3Service.execute('importantAction').pipe(first())
         .subscribe({
@@ -38,12 +39,12 @@ export class LoginComponent {
                   });
                 }, error: ()=>{
                   this.hasError = true
-                  this.errorMessage = "Server error logging in... Refresh?"
+                  this.errorMessage = this.global.error.serverError
                 }
               })
             },
             error: ()=> {
-              this.snackBar.open("Unauthentic request detected", "Reload Page", {duration: 8000})
+              this.snackBar.open(this.global.error.unauthenticRequest, "Reload Page", {duration: 8000})
                 .onAction().pipe(first()).subscribe(()=> location.reload())
             }
         });
@@ -53,10 +54,10 @@ export class LoginComponent {
   createAccount(username: string, password: string) {
     if (!this.retypePassword || !username || !password) {
       this.hasError = true
-      this.errorMessage = "Please complete all fields"
+      this.errorMessage = this.global.error.incompleteFields
     } else if (password != this.retypePassword.nativeElement.value) {
       this.hasError = true
-      this.errorMessage = "Passwords do not match"
+      this.errorMessage = this.global.error.passwordMismatch
     } else {
       this.recaptchaV3Service.execute('importantAction').pipe(first())
         .subscribe({
@@ -65,22 +66,22 @@ export class LoginComponent {
                 next: (user)=>{
                   if (user.id){
                     this.router.navigate(['/']).then(()=>{
-                      this.snackBar.open("Account created!", "Dismiss")
+                      this.snackBar.open(this.global.success.accountCreated, "Dismiss")
                         .onAction().pipe(first()).subscribe(()=> this.snackBar.dismiss())
                       this.appComponent.displayUser()
                     })
                   } else {
                     this.hasError = true
-                    this.errorMessage = "Username already exists"
+                    this.errorMessage = this.global.error.userAlreadyExists
                   }
                 }, error: ()=>{
                   this.hasError = true
-                  this.errorMessage = "Server error logging in... Refresh?"
+                  this.errorMessage = this.global.error.serverError
                 }
               })
             },
             error: ()=> {
-              this.snackBar.open("Unauthentic request detected", "Reload Page", {duration: 8000})
+              this.snackBar.open(this.global.error.unauthenticRequest, "Reload Page", {duration: 8000})
                 .onAction().pipe(first()).subscribe(()=> location.reload())
             }
         });

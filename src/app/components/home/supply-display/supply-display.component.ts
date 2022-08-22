@@ -61,9 +61,9 @@ export class SupplyDisplayComponent implements OnInit {
         this.global.currentUser.contributions += 1
         this.userRepository.updateUser(this.global.currentUser.id, this.global.currentUser)
         this.editMode = false
-        this.snackBar.open("Update successful!", "Dismiss", {duration: 3000})
+        this.snackBar.open(this.global.success.saveSuccessful, "Dismiss", {duration: 3000})
       }, error: () => {
-        this.snackBar.open("Server error. Please try again", "Reload Page", {duration: 8000})
+        this.snackBar.open(this.global.error.serverError, "Reload Page", {duration: 8000})
           .onAction().pipe(first()).subscribe(()=> location.reload())
       }
     })
@@ -86,7 +86,7 @@ export class SupplyDisplayComponent implements OnInit {
                 this.saveSupply(token)
               },
               error: ()=> {
-                this.snackBar.open("Unauthentic request detected", "Reload Page", {duration: 8000})
+                this.snackBar.open(this.global.error.unauthenticRequest, "Reload Page", {duration: 8000})
                   .onAction().pipe(first()).subscribe(()=> location.reload())
               }
             }
@@ -99,7 +99,7 @@ export class SupplyDisplayComponent implements OnInit {
             this.saveSupply(token)
           },
           error: ()=> {
-            this.snackBar.open("Unauthentic request detected", "Reload Page", {duration: 8000})
+            this.snackBar.open(this.global.error.unauthenticRequest, "Reload Page", {duration: 8000})
               .onAction().pipe(first()).subscribe(()=> location.reload())
           }
         }
