@@ -14,6 +14,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
+import static java.util.Objects.isNull;
+
 @CrossOrigin
 @RestController
 public class RouteController {
@@ -38,17 +40,16 @@ public class RouteController {
         return supplyRepository.findByMachineId(Integer.valueOf(machineId));
     }
 
+    @GetMapping("/user/{username}")
+    User getUser(@PathVariable String username){ return userRepository.findByUsername(username); }
+
     @PostMapping("/save")
     @ResponseBody
-    Supply save(@RequestBody SupplyToken supplyToken) {
-        RestTemplate restTemplate = new RestTemplate();
-        ObjectMapper mapper = new ObjectMapper();
-        String secretKey = new Captcha().getSecretKey();
+    Supply save(@RequestBody Supply supply) {
         try {
-            String url = "https://www.google.com/recaptcha/api/siteverify?secret=" + secretKey +"&response="+supplyToken.getToken();
-            HashMap map = mapper.readValue(restTemplate.getForObject(url, String.class), HashMap.class);
-            if (map.get("success").equals(true)){
-                return supplyRepository.save(supplyToken.getSupply());
+            if (passesCaptcha(supply.getToken())){
+                supply.setToken(null);
+                return supplyRepository.save(supply);
             } else {
                 return null;
             }
@@ -60,9 +61,66 @@ public class RouteController {
     @PostMapping("/login")
     @ResponseBody
     public Optional<User> logIn(@RequestBody User user) {
-        System.out.println(user);
-        System.out.println(userRepository.findUserByUsernameAndPassword(user.getUsername(), user.getPassword()));
-        return userRepository.findUserByUsernameAndPassword(user.getUsername(), user.getPassword());
+        try {
+            if (passesCaptcha(user.getToken())){
+                return userRepository.findUserByUsernameAndPassword(user.getUsername(), user.getPassword());
+            } else {
+                return Optional.empty();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Optional.empty();
+        }
+    }
 
+    @PostMapping("/create")
+    @ResponseBody
+    public User createAccount(@RequestBody User user) {
+        try {
+            if (passesCaptcha(user.getToken())){
+                if (userRepository.existsUserByUsername(user.getUsername())){
+                    return new User();
+                } else {
+                    user.setId(null);
+                    user.setToken(null);
+                    return userRepository.save(user);
+                }
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @PostMapping("/updateUser")
+    @ResponseBody
+    public User updateUser(@RequestBody User user) {
+        try {
+            if (passesCaptcha(user.getToken())){
+                user.setToken(null);
+                return userRepository.save(user);
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    boolean passesCaptcha(String token) {
+        String secretKey = new Captcha().getSecretKey();
+        String url = "https://www.google.com/recaptcha/api/siteverify?secret="+secretKey+"&response="+token;
+        ObjectMapper mapper = new ObjectMapper();
+        RestTemplate restTemplate = new RestTemplate();
+        try {
+            HashMap map = mapper.readValue(restTemplate.getForObject(url, String.class), HashMap.class);
+            return map.get("success").equals(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

@@ -13,6 +13,9 @@ public class User {
     private Integer id;
     private String username;
     private String password;
+    private String token;
+    private Integer contributions;
+    private String display_name;
 
     public User() {
     }
@@ -40,4 +43,16 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public String getToken() { return token; }
+
+    public void setToken(String token) { this.token = token; }
+
+    public Integer getContributions() { return contributions; }
+
+    public void setContributions(Integer contributions) { this.contributions = contributions; }
+
+    public String getDisplay_name() { return display_name; }
+
+    public void setDisplay_name(String display_name) { this.display_name = display_name; }
 }
