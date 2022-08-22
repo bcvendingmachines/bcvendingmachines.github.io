@@ -20,7 +20,8 @@ export class UserService {
       username: username,
       password: password,
       token: token,
-      display_name: username
+      display_name: username,
+      contributions: 0
     }
     return this.http.post<User>(Configs.loginUrl, user).pipe(tap((user)=> {
       this.repo.addUser(user)
@@ -33,12 +34,19 @@ export class UserService {
       username: username,
       password: password,
       token: token,
-      display_name: username
+      display_name: username,
+      contributions: 0
     }
     return this.http.post<User>(Configs.createAccountUrl, user).pipe(tap((user)=>{
       if (user.id){
         this.repo.addUser(user)
       }
+    }))
+  }
+
+  updateUser(user: User) {
+    return this.http.post<User>(Configs.updateUserUrl, user).pipe(tap((user)=> {
+      this.repo.updateUser(user.id, user)
     }))
   }
 }

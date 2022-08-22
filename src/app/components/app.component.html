@@ -9,11 +9,11 @@
     </button>
   </span>
   <span>
-    <button *ngIf="!loggedIn" mat-button class="button" routerLink="/login" aria-label="Log in">
+    <button *ngIf="!global.loggedIn" mat-button class="button" routerLink="/login" aria-label="Log in">
       <span style="padding-right: 0.3rem">{{loginTitle}}</span>
       <mat-icon>account_circle</mat-icon>
     </button>
-    <button *ngIf="loggedIn" mat-button class="button" (click)="checkUser()" routerLink="/account/{{loginTitle}}" aria-label="Account settings">
+    <button *ngIf="global.loggedIn" mat-button class="button" routerLink="/account/{{global.currentUser.username}}" aria-label="Account settings">
       <span style="padding-right: 0.3rem">{{loginTitle}}</span>
       <mat-icon>account_circle</mat-icon>
     </button>

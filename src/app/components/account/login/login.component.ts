@@ -13,9 +13,9 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 
 export class LoginComponent {
-  error: boolean = false
+  hasError: boolean = false
   creatingAccount: boolean = false
-  errorMessage = "Please complete all forms"
+  errorMessage: string = "Please complete all forms"
   username: string | undefined = "Login"
   @ViewChild('retypePassword') retypePassword: ElementRef | undefined;
 
@@ -25,7 +25,7 @@ export class LoginComponent {
 
   login(username: string, password: string) {
     if (!username || !password){
-      this.error = true
+      this.hasError = true
       this.errorMessage = "Please complete all fields"
     } else {
       this.recaptchaV3Service.execute('importantAction').pipe(first())
@@ -37,7 +37,7 @@ export class LoginComponent {
                     this.appComponent.displayUser()
                   });
                 }, error: ()=>{
-                  this.error = true
+                  this.hasError = true
                   this.errorMessage = "Server error logging in... Refresh?"
                 }
               })
@@ -52,10 +52,10 @@ export class LoginComponent {
 
   createAccount(username: string, password: string) {
     if (!this.retypePassword || !username || !password) {
-      this.error = true
+      this.hasError = true
       this.errorMessage = "Please complete all fields"
     } else if (password != this.retypePassword.nativeElement.value) {
-      this.error = true
+      this.hasError = true
       this.errorMessage = "Passwords do not match"
     } else {
       this.recaptchaV3Service.execute('importantAction').pipe(first())
@@ -65,14 +65,16 @@ export class LoginComponent {
                 next: (user)=>{
                   if (user.id){
                     this.router.navigate(['/']).then(()=>{
+                      this.snackBar.open("Account created!", "Dismiss")
+                        .onAction().pipe(first()).subscribe(()=> this.snackBar.dismiss())
                       this.appComponent.displayUser()
                     })
                   } else {
-                    this.error = true
+                    this.hasError = true
                     this.errorMessage = "Username already exists"
                   }
                 }, error: ()=>{
-                  this.error = true
+                  this.hasError = true
                   this.errorMessage = "Server error logging in... Refresh?"
                 }
               })

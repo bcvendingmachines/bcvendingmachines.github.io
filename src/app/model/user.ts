@@ -3,6 +3,6 @@ export class User {
   username: string | undefined
   password: string | undefined
   token?: string | undefined
-  contributions?: number | undefined
+  contributions!: number
   display_name: string | undefined
 }

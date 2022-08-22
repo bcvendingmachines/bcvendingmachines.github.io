@@ -1,4 +1,5 @@
 import { Machine } from "./machine"
+import {User} from "./user";
 
 export class Supply {
   id!: number
@@ -8,4 +9,5 @@ export class Supply {
   time_checked!: Date
   checked_by!: string
   token?: string
+  user_id!: User
 }

@@ -53,4 +53,6 @@ Don't run this in Bash because Bash mistreats base-href (it's a known issue). If
 
 ## Dev Checklist 
 
-- Log in functionality
+- Error message enum
+- Better logout
+- Keep user logged in on refresh

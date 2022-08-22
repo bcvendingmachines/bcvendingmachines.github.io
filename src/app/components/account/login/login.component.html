@@ -23,7 +23,7 @@
       <button *ngIf="!creatingAccount" mat-button (click)="login(username.value, password.value)">Log in</button>
       <button mat-button routerLink="/">Back</button>
     </mat-card-actions>
-    <p *ngIf="error" class="mat-small mat-error">
+    <p *ngIf="hasError" class="mat-small mat-error">
       {{ errorMessage }}
     </p>
   </mat-card>

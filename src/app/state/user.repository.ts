@@ -15,7 +15,7 @@ export interface User {
   id: PropertyKey | number
   username: string | undefined
   password: string | undefined
-  contributions?: number | undefined
+  contributions: number
   display_name: string | undefined
 }
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from "@angular/common/http"
-import { Observable } from 'rxjs'
+import {Observable} from 'rxjs'
 import { Supply } from '../model/supply'
 import {Configs} from "./configs";
 
@@ -14,7 +14,7 @@ export class SupplyService {
   public getSupply(id:number) : Observable<Supply> { return this.http.get<Supply>(Configs.supplyUrl + id) }
 
   public save(supplyData: Supply, token: string): Observable<Supply> {
-    let supply: Supply = {
+    const supply = {
       ...supplyData,
       token: token
     }
