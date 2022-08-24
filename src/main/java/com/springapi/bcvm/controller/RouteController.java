@@ -124,23 +124,8 @@ public class RouteController {
         }
     }
     @PostMapping("/populate")
-    public void populateMachines(){
+    public void populateMachines(Supply supply){
         if (!machineRepository.findById(1).isPresent()){
-            Machine wp = new Machine();
-            wp.setName("Woods-Penniman");
-            machineRepository.save(wp);
-            Machine draper = new Machine();
-            draper.setName("Draper");
-            machineRepository.save(draper);
-            Machine hutchins = new Machine();
-            hutchins.setName("Hutchins");
-            machineRepository.save(hutchins);
-            Machine alumni = new Machine();
-            alumni.setName("Alumni");
-            machineRepository.save(alumni);
-            Machine seabury = new Machine();
-            seabury.setName("Seabury");
-            machineRepository.save(seabury);
 
             Supply wpSupply = new Supply();
             wpSupply.setShort_supply(true);
@@ -196,4 +181,5 @@ public class RouteController {
         return opt
                 .map(Collections::singletonList)
                 .orElseGet(Collections::emptyList);
+    }
 }
