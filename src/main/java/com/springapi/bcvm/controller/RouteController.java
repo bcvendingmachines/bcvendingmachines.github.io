@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.client.RestTemplate;
 
+import java.sql.Date;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -51,12 +53,7 @@ public class RouteController {
     @ResponseBody
     Supply save(@RequestBody Supply supply) {
         try {
-            if (passesCaptcha(supply.getToken())){
-                supply.setToken(null);
-                return supplyRepository.save(supply);
-            } else {
-                return null;
-            }
+            return supplyRepository.save(supply);
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -144,6 +141,59 @@ public class RouteController {
             Machine seabury = new Machine();
             seabury.setName("Seabury");
             machineRepository.save(seabury);
+
+            Supply wpSupply = new Supply();
+            wpSupply.setShort_supply(true);
+            wpSupply.setChecked_by("Zach");
+            wpSupply.setCoffee(true);
+            wpSupply.setTime_checked(new Date(2022, 8, 24));
+            wpSupply.setUser_id(userRepository.findByUsername("zach"));
+            Optional<Machine> wpMachine = machineRepository.findById(1);
+            wpSupply.setMachine(toList(wpMachine).get(1));
+            save(wpSupply);
+            Supply draperSupply = new Supply();
+            draperSupply.setShort_supply(true);
+            draperSupply.setChecked_by("Zach");
+            draperSupply.setCoffee(true);
+            draperSupply.setTime_checked(new Date(2022, 8, 24));
+            draperSupply.setUser_id(userRepository.findByUsername("zach"));
+            Optional<Machine> draperMachine = machineRepository.findById(2);
+            draperSupply.setMachine(toList(draperMachine).get(2));
+            save(draperSupply);
+
+            Supply hutchinsSupply = new Supply();
+            hutchinsSupply.setShort_supply(true);
+            hutchinsSupply.setChecked_by("Zach");
+            hutchinsSupply.setCoffee(true);
+            hutchinsSupply.setTime_checked(new Date(2022, 8, 24));
+            hutchinsSupply.setUser_id(userRepository.findByUsername("zach"));
+            Optional<Machine> hutchinsMachine = machineRepository.findById(3);
+            hutchinsSupply.setMachine(toList(hutchinsMachine).get(3));
+            save(hutchinsSupply);
+
+            Supply alumniSupply = new Supply();
+            alumniSupply.setShort_supply(true);
+            alumniSupply.setChecked_by("Zach");
+            alumniSupply.setCoffee(true);
+            alumniSupply.setTime_checked(new Date(2022, 8, 24));
+            alumniSupply.setUser_id(userRepository.findByUsername("zach"));
+            Optional<Machine> alumniMachine = machineRepository.findById(3);
+            alumniSupply.setMachine(toList(alumniMachine).get(3));
+            save(alumniSupply);
+
+            Supply seaburySupply = new Supply();
+            seaburySupply.setShort_supply(true);
+            seaburySupply.setChecked_by("Zach");
+            seaburySupply.setCoffee(true);
+            seaburySupply.setTime_checked(new Date(2022, 8, 24));
+            seaburySupply.setUser_id(userRepository.findByUsername("zach"));
+            Optional<Machine> seaburyMachine = machineRepository.findById(3);
+            seaburySupply.setMachine(toList(seaburyMachine).get(3));
+            save(seaburySupply);
         }
     }
+    public static <T> List<T> toList(Optional<T> opt) {
+        return opt
+                .map(Collections::singletonList)
+                .orElseGet(Collections::emptyList);
 }
