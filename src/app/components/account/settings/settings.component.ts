@@ -40,9 +40,9 @@ export class SettingsComponent implements OnInit {
 
   logOut(): void {
     this.userRepository.deleteUser(this.global.currentUser.id)
+    this.global.currentUser = new User()
+    this.global.loggedIn = false
     this.router.navigate(['/']).then(()=>{
-      this.global.currentUser = new User()
-      location.reload()
     });
   }
 

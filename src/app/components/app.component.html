@@ -10,11 +10,11 @@
   </span>
   <span>
     <button *ngIf="!global.loggedIn" mat-button class="button" routerLink="/login" aria-label="Log in">
-      <span style="padding-right: 0.3rem">{{loginTitle}}</span>
+      <span style="padding-right: 0.3rem">Login</span>
       <mat-icon>account_circle</mat-icon>
     </button>
     <button *ngIf="global.loggedIn" mat-button class="button" routerLink="/account/{{global.currentUser.username}}" aria-label="Account settings">
-      <span style="padding-right: 0.3rem">{{loginTitle}}</span>
+      <span style="padding-right: 0.3rem">{{this.global.currentUser.display_name}}</span>
       <mat-icon>account_circle</mat-icon>
     </button>
   </span>
@@ -24,7 +24,7 @@
 
 <footer>
   <p class="footer">
-    © {{fullYear}} Zach Neill | This site is protected by reCAPTCHA
+    v1.0.0 | © {{fullYear}} Zach Neill | This site is protected by reCAPTCHA
   </p>
 </footer>
 </div>

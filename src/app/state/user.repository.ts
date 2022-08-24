@@ -8,7 +8,7 @@ import {
   withEntities
 } from '@ngneat/elf-entities';
 import {Observable} from 'rxjs';
-import {withRequestsCache, withRequestsStatus} from '@ngneat/elf-requests';
+import {createRequestsCacheOperator, withRequestsCache, withRequestsStatus} from '@ngneat/elf-requests';
 import {Injectable} from "@angular/core";
 
 export interface User {
@@ -23,12 +23,15 @@ export interface User {
 export class UserRepository {
   user$: Observable<User[]>;
   currentUser: Observable<User | undefined>
-  private store;
+  skipWhileUserCached
+  private readonly store;
 
   constructor() {
     this.store = this.createStore();
     this.user$ = this.store.pipe(selectAllEntities());
     this.currentUser = this.store.pipe(selectFirst())
+    this.skipWhileUserCached = createRequestsCacheOperator(this.store);
+
   }
 
   setUser(user: User[]) {
@@ -50,6 +53,6 @@ export class UserRepository {
   private createStore() {
     return createStore({name: 'user'},
       withEntities<User, 'id'>({idKey: 'id'}),
-      withRequestsCache<'User'>(), withRequestsStatus<'User'>());
+      withRequestsCache<'User'>());
   }
 }

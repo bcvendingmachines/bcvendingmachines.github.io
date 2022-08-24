@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from "@angular/common/http"
-import {Observable, tap} from 'rxjs'
+import {Observable, of, tap} from 'rxjs'
 import {Configs} from "./configs";
 import {User} from "../model/user";
 import {UserRepository} from "../state/user.repository";
@@ -9,10 +9,16 @@ import {UserRepository} from "../state/user.repository";
   providedIn: 'root'
 })
 export class UserService {
-
+  user: User = new User()
   constructor(private http: HttpClient, private repo: UserRepository) { }
 
-  public getUser(username: string | null): Observable<User> { return this.http.get<User>(Configs.userUrl+username) }
+  public getUser(username: string | null): Observable<User> {
+    this.http.get<User>(Configs.userUrl+username).subscribe((user)=>{
+      this.repo.setUser([user])
+      return of(user)
+    })
+    return of(this.user)
+  }
 
   public logIn(username: string, password: string, token: string) : Observable<any> {
     const user: User ={
