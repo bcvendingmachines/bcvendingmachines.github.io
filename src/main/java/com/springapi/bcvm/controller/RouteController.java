@@ -128,7 +128,7 @@ public class RouteController {
     }
     @PostMapping("/populate")
     public void populateMachines(){
-        if (machineRepository.findById(1).isPresent()){
+        if (!machineRepository.findById(1).isPresent()){
             Machine wp = new Machine();
             wp.setName("Woods-Penniman");
             machineRepository.save(wp);
