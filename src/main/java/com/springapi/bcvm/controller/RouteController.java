@@ -125,7 +125,7 @@ public class RouteController {
     }
     @PostMapping("/populate")
     public void populateMachines(Supply supply){
-        if (!machineRepository.findById(1).isPresent()){
+        if (!supplyRepository.findById(1).isPresent()){
 
             Supply wpSupply = new Supply();
             wpSupply.setShort_supply(true);
