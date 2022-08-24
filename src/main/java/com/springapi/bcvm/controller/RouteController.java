@@ -126,6 +126,7 @@ public class RouteController {
             return false;
         }
     }
+    @PostMapping("/populate")
     public void populateMachines(){
         if (machineRepository.findById(1).isPresent()){
             Machine wp = new Machine();
