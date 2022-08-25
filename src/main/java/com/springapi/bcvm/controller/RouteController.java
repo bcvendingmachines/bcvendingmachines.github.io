@@ -53,6 +53,7 @@ public class RouteController {
     @ResponseBody
     Supply save(@RequestBody Supply supply) {
         try {
+            supply.setToken(null);
             return supplyRepository.save(supply);
         } catch (Exception e) {
             e.printStackTrace();
