@@ -3,7 +3,7 @@ DELETE FROM machine WHERE id != 999;
 DELETE FROM users WHERE id != 999;
 
 INSERT INTO users(id, username, password, contributions, display_name)
-VALUES (2, 'zach', 'zach', 5, 'Zach'), (1, 'guest', 'guest', 9, 'Guest'), (3, 'test2', 'test2', 1, 'Test 2');
+VALUES (1, 'zach', 'zach', 5, 'Zach'), (2, 'guest', 'guest', 9, 'Guest'), (3, 'test2', 'test2', 1, 'Test 2');
 
 INSERT INTO machine(id, "name")
 VALUES (1, 'Woods-Penniman'), (2, 'Draper'), (3, 'Hutchins'), (4, 'Alumni'), (5, 'Seabury');
