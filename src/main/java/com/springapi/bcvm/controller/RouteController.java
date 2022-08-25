@@ -53,8 +53,12 @@ public class RouteController {
     @ResponseBody
     Supply save(@RequestBody Supply supply) {
         try {
-            supply.setToken(null);
-            return supplyRepository.save(supply);
+            if (passesCaptcha(supply.getToken())){
+                supply.setToken(null);
+                return supplyRepository.save(supply);
+            } else {
+                return null;
+            }
         } catch (Exception e) {
             e.printStackTrace();
             return null;
