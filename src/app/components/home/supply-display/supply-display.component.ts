@@ -106,8 +106,4 @@ export class SupplyDisplayComponent implements OnInit {
       );
     }
   }
-
-  populateSupply() {
-    this.supplyService.populateSupply()
-  }
 }
