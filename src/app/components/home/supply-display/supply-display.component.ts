@@ -79,6 +79,7 @@ export class SupplyDisplayComponent implements OnInit {
     this.newSupply.user_id = this.global.currentUser
     if (!this.global.loggedIn) {
       this.userService.getUser("guest").pipe(first()).subscribe((user) => {
+      this.userRepository.setUser([user])
         this.newSupply.user_id = user
         this.recaptchaV3Service.execute('importantAction').pipe(first())
           .subscribe({
