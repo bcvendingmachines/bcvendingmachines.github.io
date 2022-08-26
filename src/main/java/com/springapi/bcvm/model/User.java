@@ -16,6 +16,7 @@ public class User {
     private String token;
     private Integer contributions;
     private String display_name;
+    private String salt;
 
     public User() {
     }
@@ -55,4 +56,8 @@ public class User {
     public String getDisplay_name() { return display_name; }
 
     public void setDisplay_name(String display_name) { this.display_name = display_name; }
+
+    public String getSalt() { return salt; }
+
+    public void setSalt(String salt) { this.salt = salt; }
 }
