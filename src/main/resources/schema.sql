@@ -10,18 +10,18 @@ DROP TABLE IF EXISTS public.users;
 CREATE TABLE IF NOT EXISTS public.users
 (
     id serial PRIMARY KEY,
-    username character varying(50) COLLATE pg_catalog."default",
-    password character varying(50) COLLATE pg_catalog."default",
-    token character varying(50) COLLATE pg_catalog."default",
+    username character varying(200) COLLATE pg_catalog."default",
+    password character varying(200) COLLATE pg_catalog."default",
+    token character varying(200) COLLATE pg_catalog."default",
     contributions integer,
-    display_name character varying(50) COLLATE pg_catalog."default"
+    display_name character varying(200) COLLATE pg_catalog."default"
 );
 
 DROP TABLE IF EXISTS public.machine;
 CREATE TABLE IF NOT EXISTS public.machine
 (
     id serial PRIMARY KEY,
-    "name" character varying(50) COLLATE pg_catalog."default"
+    "name" character varying(200) COLLATE pg_catalog."default"
 )
     TABLESPACE pg_default;
 ALTER TABLE IF EXISTS public.machine
@@ -35,8 +35,8 @@ CREATE TABLE IF NOT EXISTS public.supply
     coffee boolean NOT NULL,
     short_supply boolean NOT NULL,
     time_checked date,
-    checked_by character varying(50) COLLATE pg_catalog."default" NOT NULL,
-    token character varying(50) COLLATE pg_catalog."default",
+    checked_by character varying(200) COLLATE pg_catalog."default" NOT NULL,
+    token character varying(200) COLLATE pg_catalog."default",
     user_id integer NOT NULL,
     CONSTRAINT machine FOREIGN KEY (machine)
         REFERENCES public.machine (id) MATCH SIMPLE

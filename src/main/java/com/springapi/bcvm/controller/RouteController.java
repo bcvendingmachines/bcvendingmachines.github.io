@@ -1,12 +1,12 @@
 package com.springapi.bcvm.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.springapi.bcvm.util.Captcha;
 import com.springapi.bcvm.model.Machine;
 import com.springapi.bcvm.model.Supply;
 import com.springapi.bcvm.model.User;
 import com.springapi.bcvm.repository.MachineRepository;
 import com.springapi.bcvm.repository.SupplyRepository;
 import com.springapi.bcvm.repository.UserRepository;
+import com.springapi.bcvm.util.Captcha;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,9 +17,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Optional;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
+import java.nio.charset.StandardCharsets;
+import java.security.SecureRandom;
+import java.util.*;
 
 @CrossOrigin
 @RestController
@@ -68,7 +70,14 @@ public class RouteController {
     public Optional<User> logIn(@RequestBody User user) {
         try {
             if (passesCaptcha(user.getToken())){
-                return userRepository.findUserByUsernameAndPassword(user.getUsername(), user.getPassword());
+                User foundUser = userRepository.findByUsername(user.getUsername());
+
+                if (foundUser.getPassword().equals(createHash(user.getPassword(), Base64.getDecoder()
+                        .decode(foundUser.getSalt())))){
+                    return Optional.of(foundUser);
+                } else {
+                    return Optional.empty();
+                }
             } else {
                 return Optional.empty();
             }
@@ -88,6 +97,10 @@ public class RouteController {
                 } else {
                     user.setId(null);
                     user.setToken(null);
+
+                    byte[] salt = new SecureRandom().generateSeed(12);
+                    user.setSalt(Base64.getEncoder().encodeToString(salt));
+                    user.setPassword(createHash(user.getPassword(), salt));
                     return userRepository.save(user);
                 }
             } else {
@@ -116,8 +129,7 @@ public class RouteController {
     }
 
     boolean passesCaptcha(String token) {
-        String secretKey = new Captcha().getSecretKey();
-        String url = "https://www.google.com/recaptcha/api/siteverify?secret="+secretKey+"&response="+token;
+        String url = "https://www.google.com/recaptcha/api/siteverify?secret="+new Captcha().getSecretKey() +"&response="+token;
         ObjectMapper mapper = new ObjectMapper();
         RestTemplate restTemplate = new RestTemplate();
         try {
@@ -126,6 +138,17 @@ public class RouteController {
         } catch (Exception e) {
             e.printStackTrace();
             return false;
+        }
+    }
+
+    String createHash(String password, byte[] salt){
+        try {
+            return Base64.getMimeEncoder().encodeToString(SecretKeyFactory.getInstance("PBKDF2WithHmacSHA512")
+                    .generateSecret(new PBEKeySpec(password.toCharArray(), salt, 10, 512))
+                    .getEncoded());
+        } catch (Exception e){
+            e.printStackTrace();
+            return null;
         }
     }
 }
