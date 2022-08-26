@@ -19,7 +19,7 @@ public class RequestThrottleFilter implements Filter {
     public RequestThrottleFilter(){
         super();
         requestCountsPerIpAddress = Caffeine.newBuilder().
-                expireAfterWrite(2, TimeUnit.SECONDS).build(key -> 0);
+                expireAfterWrite(1, TimeUnit.SECONDS).build(key -> 0);
     }
 
     @Override
@@ -45,7 +45,7 @@ public class RequestThrottleFilter implements Filter {
         Integer requests;
         requests = requestCountsPerIpAddress.get(clientIpAddress);
         if(requests != null){
-            int MAX_REQUESTS_PER_SECOND = 14;
+            int MAX_REQUESTS_PER_SECOND = 30;
             if(requests > MAX_REQUESTS_PER_SECOND) {
                 requestCountsPerIpAddress.asMap().remove(clientIpAddress);
                 requestCountsPerIpAddress.put(clientIpAddress, requests);
