@@ -7,6 +7,7 @@ import com.springapi.bcvm.repository.MachineRepository;
 import com.springapi.bcvm.repository.SupplyRepository;
 import com.springapi.bcvm.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -69,6 +70,10 @@ public class RouteController {
     public Optional<User> logIn(@RequestBody User user) {
         try {
             if (passesCaptcha(user.getToken())){
+                User foundUser = userRepository.findByUsername(user.getUsername());
+                if (new BCryptPasswordEncoder().matches(user.getPassword(), foundUser.getPassword())){
+                    return Optional.of(foundUser);
+                }
                 return userRepository.findUserByUsernameAndPassword(user.getUsername(), user.getPassword());
             } else {
                 return Optional.empty();
@@ -87,6 +92,7 @@ public class RouteController {
                 if (userRepository.existsUserByUsername(user.getUsername())){
                     return new User();
                 } else {
+                    user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
                     user.setId(null);
                     user.setToken(null);
                     return userRepository.save(user);
