@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.springapi</groupId>
     <artifactId>bcvm</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <name>BCVM</name>
     <description>The Spring Boot API for the Berea College Vending Machines app.</description>
     <properties>
