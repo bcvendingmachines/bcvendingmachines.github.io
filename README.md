@@ -1,9 +1,9 @@
 # BC Vending Machines
 
-![GitHub package.json version (branch)](https://img.shields.io/github/package-json/v/zachneill/bcvm/master?label=version&style=for-the-badge)
-![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/zachneill/bcvm/@angular/core?label=angular&style=for-the-badge)
-![Spring Boot Version](https://img.shields.io/badge/spring%20boot-2.6.4-green?style=for-the-badge)
-![GitHub last commit](https://img.shields.io/github/last-commit/zachneill/bcvm?color=purple&style=for-the-badge) 
+![GitHub package.json version (branch)](https://img.shields.io/github/package-json/v/zachneill/bcvm/master?label=Version&style=for-the-badge)
+![GitHub package.json dependency version (prod)](https://img.shields.io/static/v1?label=Angular&logo=angular&message=14.1.2&color=orange&style=for-the-badge)
+![Spring Boot Version](https://img.shields.io/badge/spring%20boot-2.6.4-green?style=for-the-badge&logo=spring)
+![GitHub last commit](https://img.shields.io/github/last-commit/zachneill/bcvm?color=purple&style=for-the-badge&logo=github) 
 
 An application that describes whether a vending machine on campus is on short supply or is out of coffee. 
 
