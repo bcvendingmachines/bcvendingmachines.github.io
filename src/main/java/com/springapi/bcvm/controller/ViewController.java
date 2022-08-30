@@ -32,7 +32,7 @@ public class ViewController {
     }
     @GetMapping("/test/supply")
     String testSupply(Model model) {
-        model.addAttribute("supplies", Collections.singletonList(supplyRepository.findByMachineId(1)));
+        model.addAttribute("supplies", Collections.singletonList(supplyRepository.findTopByOrderByMachineIdAndIdDesc())));
         return "supplyTest";
     }
 }

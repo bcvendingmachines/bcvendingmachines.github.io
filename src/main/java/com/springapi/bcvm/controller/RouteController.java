@@ -44,7 +44,8 @@ public class RouteController {
 
     @GetMapping("/supply/{machineId}")
     public Optional<Supply> getSupply(@PathVariable String machineId) {
-        return supplyRepository.findByMachineId(Integer.valueOf(machineId));
+
+        return Optional.ofNullable(supplyRepository.findTopByOrderByMachineIdDesc(Integer.valueOf(machineId)));
     }
 
     @GetMapping("/user/{username}")

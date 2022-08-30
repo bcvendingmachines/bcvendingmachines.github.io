@@ -1,27 +1,19 @@
 package com.springapi.bcvm.model;
 
-import com.sun.istack.NotNull;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
+import java.util.Collection;
+import java.util.Date;
 
-import javax.persistence.*;
-
-import java.sql.Date;
-
-@Entity
-@Table(name = "supply")
+@Document
 public class Supply {
-    @javax.persistence.Id
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @ManyToOne
-    @JoinColumn(name="machine")
-    private Machine machine;
-    @ManyToOne
-    @JoinColumn(name="user_id")
-    @NotNull
-    private User user_id;
+    @DBRef
+    private Collection<Machine> machine;
+    @DBRef
+    private Collection<User> user_id;
     private Date time_checked;
     private boolean coffee;
     private boolean short_supply;
@@ -39,17 +31,13 @@ public class Supply {
         this.id = id;
     }
 
-    public Machine getMachine() {
-        return machine;
-    }
+    public Collection<Machine> getMachine() { return machine; }
 
-    public void setMachine(Machine machine) {
-        this.machine = machine;
-    }
+    public void setMachine(Collection<Machine> machine) { this.machine = machine; }
 
-    public User getUser_id() { return user_id; }
+    public Collection<User> getUser_id() { return user_id; }
 
-    public void setUser_id(User user_id) { this.user_id = user_id; }
+    public void setUser_id(Collection<User> user_id) { this.user_id = user_id; }
 
     public Date getTime_checked() {
         return time_checked;

@@ -5,11 +5,9 @@ spring:
       ddl-auto: update
     properties:
       hibernate:
-        format_sql: true
         dialect: org.hibernate.dialect.PostgreSQL95Dialect
   datasource:
-    driver-class-name: org.postgresql.Driver
-    url: 'jdbc:postgresql://localhost:5432/postgres'
+    url: 'mongodb+srv://bcvm.qddqqys.mongodb.net/bcvm?retryWrites=true&w=majority'
 
     # Local configuration (COMMENT BELOW OUT FOR PRODUCTION)
     username: postgres
