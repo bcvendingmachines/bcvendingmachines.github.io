@@ -19,9 +19,11 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
-import java.nio.charset.StandardCharsets;
 import java.security.SecureRandom;
-import java.util.*;
+import java.util.Base64;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin
 @RestController
@@ -56,6 +58,9 @@ public class RouteController {
         try {
             if (passesCaptcha(supply.getToken())){
                 supply.setToken(null);
+                User foundBy = supply.getUser_id();
+                foundBy.setContributions(foundBy.getContributions() + 1);
+                userRepository.save(foundBy);
                 return supplyRepository.save(supply);
             } else {
                 return null;
