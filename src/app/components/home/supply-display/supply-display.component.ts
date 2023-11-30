@@ -81,7 +81,7 @@ export class SupplyDisplayComponent implements OnInit {
       this.userService.getUser("guest").pipe(first()).subscribe((user) => {
       this.userRepository.setUser([user])
         this.newSupply.user_id = user
-        this.recaptchaV3Service.execute('importantAction').pipe(first())
+        this.recaptchaV3Service.execute('AddGuestSupply').pipe(first())
           .subscribe({
               next: (token)=>{
                 this.saveSupply(token)
@@ -94,7 +94,7 @@ export class SupplyDisplayComponent implements OnInit {
           );
       })
     } else {
-      this.recaptchaV3Service.execute('importantAction').pipe(first())
+      this.recaptchaV3Service.execute('AddSupply').pipe(first())
         .subscribe({
           next: (token)=>{
             this.saveSupply(token)
