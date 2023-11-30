@@ -81,7 +81,7 @@ export class SupplyDisplayComponent implements OnInit {
       this.userService.getUser("guest").pipe(first()).subscribe((user) => {
       this.userRepository.setUser([user])
         this.newSupply.user_id = user
-        this.recaptchaV3Service.execute('importantAction').pipe(first())
+        this.recaptchaV3Service.execute('CreateAccount').pipe(first())
           .subscribe({
               next: (token)=>{
                 this.saveSupply(token)

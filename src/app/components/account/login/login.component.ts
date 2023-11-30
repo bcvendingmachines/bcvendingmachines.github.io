@@ -29,7 +29,7 @@ export class LoginComponent {
       this.hasError = true
       this.errorMessage = this.global.error.incompleteFields
     } else {
-      this.recaptchaV3Service.execute('importantAction').pipe(first())
+      this.recaptchaV3Service.execute('CreateAccount').pipe(first())
         .subscribe({
             next: (token)=>{
               this.userService.logIn(username, password, token).pipe(first()).subscribe({
