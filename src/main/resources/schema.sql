@@ -14,7 +14,8 @@ CREATE TABLE IF NOT EXISTS public.users
     password character varying(1000) COLLATE pg_catalog."default",
     token character varying(1000) COLLATE pg_catalog."default",
     contributions integer,
-    display_name character varying(1000) COLLATE pg_catalog."default"
+    display_name character varying(1000) COLLATE pg_catalog."default",
+    salt character varying(1000) COLLATE pg_catalog."default"
 );
 
 DROP TABLE IF EXISTS public.machine;

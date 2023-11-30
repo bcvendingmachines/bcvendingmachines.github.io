@@ -57,6 +57,9 @@ public class RouteController {
         try {
             if (passesCaptcha(supply.getToken())){
                 supply.setToken(null);
+                User foundBy = supply.getUser_id();
+                foundBy.setContributions(foundBy.getContributions() + 1);
+                userRepository.save(foundBy);
                 return supplyRepository.save(supply);
             } else {
                 return null;
