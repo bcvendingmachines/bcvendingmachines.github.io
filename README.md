@@ -1,11 +1,11 @@
 # BCVM Back End API
 
-![Version](https://img.shields.io/badge/version-1.0.0-red?style=for-the-badge)
-![Spring Boot Version](https://img.shields.io/badge/spring%20boot-2.6.4-green?style=for-the-badge)
-![Java Version](https://img.shields.io/badge/java-8-orange?style=for-the-badge)
-![GitHub last commit](https://img.shields.io/github/last-commit/zachneill/bcvm?color=purple&style=for-the-badge) 
+![GitHub package.json version (branch)](https://img.shields.io/github/package-json/v/zachneill/bcvm/master?label=version&color=black&style=for-the-badge)
+![Java Version](https://img.shields.io/badge/java-8-orange?style=for-the-badge&logo=)
+![Spring Boot Version](https://img.shields.io/badge/spring%20boot-2.6.4-green?style=for-the-badge&logo=spring)
+![GitHub last commit](https://img.shields.io/github/last-commit/zachneill/bcvm?color=purple&style=for-the-badge&logo=github)
 
-The back end REST API for the BC Vending Machines app. This uses Spring Boot 2.6.4 alongside Java 8. The production build is deployed on Heroku at [bcvm.herokuapp.com](https://bcvm.herokuapp.com/). The Angular front end is available in the master branch of the [BCVM](https://github.com/zachneill/bcvm) repo.
+This branch is the back end REST API for the BC Vending Machines app. It uses Spring Boot 2.6.4 alongside Java 8. The production build is deployed on Heroku at [bcvm.herokuapp.com](https://bcvm.herokuapp.com/). The Angular front end is available in the master branch of the [BCVM](https://github.com/zachneill/bcvm) repo.
 
 ## Running the Application
 
