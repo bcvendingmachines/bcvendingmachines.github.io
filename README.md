@@ -58,3 +58,4 @@ For development, use the `api-develop` and `develop` branches.
 
 - Better logout
 - Keep user logged in on refresh
+- Docker!!!
